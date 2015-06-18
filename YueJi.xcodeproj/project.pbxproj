@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		019782A61B326BF900168223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A51B326BF900168223 /* AppDelegate.swift */; };
+		019782A81B326BF900168223 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A71B326BF900168223 /* ViewController.swift */; };
+		019782AB1B326BF900168223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 019782A91B326BF900168223 /* Main.storyboard */; };
+		019782AD1B326BF900168223 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 019782AC1B326BF900168223 /* Images.xcassets */; };
+		019782B01B326BF900168223 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 019782AE1B326BF900168223 /* LaunchScreen.xib */; };
+		019782BC1B326BF900168223 /* YueJiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782BB1B326BF900168223 /* YueJiTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		019782B61B326BF900168223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 019782981B326BF900168223 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0197829F1B326BF900168223;
+			remoteInfo = YueJi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		019782A01B326BF900168223 /* YueJi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YueJi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		019782A41B326BF900168223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		019782A51B326BF900168223 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		019782A71B326BF900168223 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		019782AA1B326BF900168223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		019782AC1B326BF900168223 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		019782AF1B326BF900168223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		019782B51B326BF900168223 /* YueJiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YueJiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		019782BA1B326BF900168223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		019782BB1B326BF900168223 /* YueJiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YueJiTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0197829D1B326BF900168223 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019782B21B326BF900168223 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		019782971B326BF900168223 = {
+			isa = PBXGroup;
+			children = (
+				019782A21B326BF900168223 /* YueJi */,
+				019782B81B326BF900168223 /* YueJiTests */,
+				019782A11B326BF900168223 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		019782A11B326BF900168223 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				019782A01B326BF900168223 /* YueJi.app */,
+				019782B51B326BF900168223 /* YueJiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		019782A21B326BF900168223 /* YueJi */ = {
+			isa = PBXGroup;
+			children = (
+				019782A51B326BF900168223 /* AppDelegate.swift */,
+				019782A71B326BF900168223 /* ViewController.swift */,
+				019782A91B326BF900168223 /* Main.storyboard */,
+				019782AC1B326BF900168223 /* Images.xcassets */,
+				019782AE1B326BF900168223 /* LaunchScreen.xib */,
+				019782A31B326BF900168223 /* Supporting Files */,
+			);
+			path = YueJi;
+			sourceTree = "<group>";
+		};
+		019782A31B326BF900168223 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				019782A41B326BF900168223 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		019782B81B326BF900168223 /* YueJiTests */ = {
+			isa = PBXGroup;
+			children = (
+				019782BB1B326BF900168223 /* YueJiTests.swift */,
+				019782B91B326BF900168223 /* Supporting Files */,
+			);
+			path = YueJiTests;
+			sourceTree = "<group>";
+		};
+		019782B91B326BF900168223 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				019782BA1B326BF900168223 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0197829F1B326BF900168223 /* YueJi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 019782BF1B326BF900168223 /* Build configuration list for PBXNativeTarget "YueJi" */;
+			buildPhases = (
+				0197829C1B326BF900168223 /* Sources */,
+				0197829D1B326BF900168223 /* Frameworks */,
+				0197829E1B326BF900168223 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YueJi;
+			productName = YueJi;
+			productReference = 019782A01B326BF900168223 /* YueJi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		019782B41B326BF900168223 /* YueJiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 019782C21B326BF900168223 /* Build configuration list for PBXNativeTarget "YueJiTests" */;
+			buildPhases = (
+				019782B11B326BF900168223 /* Sources */,
+				019782B21B326BF900168223 /* Frameworks */,
+				019782B31B326BF900168223 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				019782B71B326BF900168223 /* PBXTargetDependency */,
+			);
+			name = YueJiTests;
+			productName = YueJiTests;
+			productReference = 019782B51B326BF900168223 /* YueJiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		019782981B326BF900168223 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "翁嘉升";
+				TargetAttributes = {
+					0197829F1B326BF900168223 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					019782B41B326BF900168223 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 0197829F1B326BF900168223;
+					};
+				};
+			};
+			buildConfigurationList = 0197829B1B326BF900168223 /* Build configuration list for PBXProject "YueJi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 019782971B326BF900168223;
+			productRefGroup = 019782A11B326BF900168223 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0197829F1B326BF900168223 /* YueJi */,
+				019782B41B326BF900168223 /* YueJiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0197829E1B326BF900168223 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019782AB1B326BF900168223 /* Main.storyboard in Resources */,
+				019782B01B326BF900168223 /* LaunchScreen.xib in Resources */,
+				019782AD1B326BF900168223 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019782B31B326BF900168223 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0197829C1B326BF900168223 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019782A81B326BF900168223 /* ViewController.swift in Sources */,
+				019782A61B326BF900168223 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		019782B11B326BF900168223 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				019782BC1B326BF900168223 /* YueJiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		019782B71B326BF900168223 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0197829F1B326BF900168223 /* YueJi */;
+			targetProxy = 019782B61B326BF900168223 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		019782A91B326BF900168223 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				019782AA1B326BF900168223 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		019782AE1B326BF900168223 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				019782AF1B326BF900168223 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		019782BD1B326BF900168223 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		019782BE1B326BF900168223 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		019782C01B326BF900168223 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YueJi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		019782C11B326BF900168223 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YueJi/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		019782C31B326BF900168223 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = YueJiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YueJi.app/YueJi";
+			};
+			name = Debug;
+		};
+		019782C41B326BF900168223 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = YueJiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YueJi.app/YueJi";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0197829B1B326BF900168223 /* Build configuration list for PBXProject "YueJi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019782BD1B326BF900168223 /* Debug */,
+				019782BE1B326BF900168223 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		019782BF1B326BF900168223 /* Build configuration list for PBXNativeTarget "YueJi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019782C01B326BF900168223 /* Debug */,
+				019782C11B326BF900168223 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		019782C21B326BF900168223 /* Build configuration list for PBXNativeTarget "YueJiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019782C31B326BF900168223 /* Debug */,
+				019782C41B326BF900168223 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 019782981B326BF900168223 /* Project object */;
+}
