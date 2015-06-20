@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-dc-XI3">
-                                <rect key="frame" x="-5" y="360" width="605" height="240"/>
+                                <rect key="frame" x="-5" y="360" width="605" height="192"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="douban" rowHeight="94" id="M7a-Td-s86" customClass="SongTableViewCell" customModule="YueJi" customModuleProvider="target">
@@ -112,8 +112,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eva-pX-h22">
-                                                    <rect key="frame" x="76" y="32" width="472" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eva-pX-h22">
+                                                    <rect key="frame" x="76" y="34" width="472" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -197,7 +197,7 @@
                                 <rect key="frame" x="250" y="127" width="100" height="100"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAg-Gs-EjR">
-                                <rect key="frame" x="270.5" y="24" width="58.5" height="27.5"/>
+                                <rect key="frame" x="270" y="24" width="58.5" height="27.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="Hay-lS-xfl"/>
                                 </constraints>
@@ -225,7 +225,7 @@
                         <constraints>
                             <constraint firstItem="O8a-J9-Zvg" firstAttribute="centerY" secondItem="5P6-QT-AcO" secondAttribute="centerY" id="51j-xy-Eq6"/>
                             <constraint firstItem="O8a-J9-Zvg" firstAttribute="centerY" secondItem="5P6-QT-AcO" secondAttribute="centerY" id="5md-Da-QNS"/>
-                            <constraint firstItem="MBj-dc-XI3" firstAttribute="height" secondItem="mOn-UR-vgj" secondAttribute="height" multiplier="0.4" id="Cwv-8P-s41"/>
+                            <constraint firstItem="MBj-dc-XI3" firstAttribute="height" secondItem="mOn-UR-vgj" secondAttribute="height" multiplier="0.32" id="Cwv-8P-s41"/>
                             <constraint firstItem="gcd-TF-PhT" firstAttribute="top" secondItem="MBj-dc-XI3" secondAttribute="bottom" constant="-49" id="EkY-La-DJW"/>
                             <constraint firstItem="MBj-dc-XI3" firstAttribute="leading" secondItem="mOn-UR-vgj" secondAttribute="leadingMargin" constant="-21" id="GY3-7g-WGW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O8a-J9-Zvg" secondAttribute="trailing" constant="-16" id="I6t-Qh-CY8"/>
@@ -252,6 +252,7 @@
                             <constraint firstAttribute="centerX" secondItem="nAg-Gs-EjR" secondAttribute="centerX" id="t4c-5P-5Ir"/>
                             <constraint firstItem="EiX-QS-BxX" firstAttribute="trailing" secondItem="O8a-J9-Zvg" secondAttribute="trailing" constant="-15" id="uXT-MW-dyJ"/>
                             <constraint firstItem="O8a-J9-Zvg" firstAttribute="centerX" secondItem="5P6-QT-AcO" secondAttribute="centerX" id="vUo-Hv-bsx"/>
+                            <constraint firstItem="MBj-dc-XI3" firstAttribute="top" secondItem="O8a-J9-Zvg" secondAttribute="bottom" constant="6" id="xL8-UJ-ax6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O8a-J9-Zvg" secondAttribute="trailing" constant="-16" id="zmS-CQ-8Dn"/>
                         </constraints>
                         <variation key="default">
@@ -268,6 +269,7 @@
                                 <exclude reference="O5A-ny-sy0"/>
                                 <exclude reference="SRk-Oj-9Nd"/>
                                 <exclude reference="Zyg-F1-tO5"/>
+                                <exclude reference="EkY-La-DJW"/>
                                 <exclude reference="Uay-Fc-iGx"/>
                             </mask>
                         </variation>
