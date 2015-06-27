@@ -11,11 +11,12 @@ import MediaPlayer
 //import QuartzCore
 import Alamofire
 import Haneke
+//import AVFoundation
 
 var commonChannelData = []
-
-class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,HttpProtocol,ChannelProtocol {
+class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,HttpProtocol,ChannelProtocol,UICollectionViewDataSource,UICollectionViewDelegate,walkthroughFinish {
     
+    @IBOutlet weak var songCollection: UICollectionView!
     @IBOutlet weak var songTableView: UITableView!
     
     
@@ -66,17 +67,69 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let walkthrough = PageContent2ViewController()
+//        walkthrough.delegate = self
+//        walkthrough.didReceiving()
+        
         eHttp.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
-        eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
-        eHttp.onSearch("http://douban.fm/j/mine/playlist?channel=0")
         iv.addGestureRecognizer(tap!)
         iv.image = UIImage(named:"music")
         songTableView.estimatedRowHeight = 60
         songTableView.rowHeight = UITableViewAutomaticDimension
         
+
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "loadMain", userInfo: nil, repeats: false)
+    }
+    
+    func loadMain(){
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.boolForKey("hasViewWalkthrough") == false {
+            
+            //设置引导页
+            if let pageViewContrller = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as? PageViewController{
+                //We just create the PageViewController and present it in a modal way
+                if let pageDelegate = storyboard?.instantiateViewControllerWithIdentifier("PageContent2ViewController") as? PageContent2ViewController{
+//                    pageDelegate.delegate = self
+//                    pageDelegate.didReceiving()
+                    self.presentViewController(pageViewContrller, animated: true, completion: nil)
+                }
+                
+                
+            }
+        }else{
+            loadData()
+        }
+    }
+    
+    func loadData(){
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
+        eHttp.onSearch("http://douban.fm/j/mine/playlist?channel=0")
         
     }
+    
+    func walkthroughDidFinish() {
+        println("lsb")
+        loadData()
+    }
+    
+    
+    
+//    override func viewDidAppear(animated: Bool) {
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        if defaults.boolForKey("hasViewWalkthrough"){
+//            eHttp.delegate = self
+//            // Do any additional setup after loading the view, typically from a nib.
+//            eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
+//            eHttp.onSearch("http://douban.fm/j/mine/playlist?channel=0")
+//            iv.addGestureRecognizer(tap!)
+//            iv.image = UIImage(named:"music")
+//            songTableView.estimatedRowHeight = 60
+//            songTableView.rowHeight = UITableViewAutomaticDimension
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,18 +144,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-//        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "douban")
-//        let rowData = self.tableData[indexPath.row] as! NSDictionary
-//        cell.textLabel?.text = rowData["title"] as? String
-//        cell.detailTextLabel?.text = rowData["artist"] as? String
-//        
-//        cell.imageView?.image = UIImage(named: "lsb")
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("douban", forIndexPath: indexPath) as! SongTableViewCell
         let rowData = self.tableData[indexPath.row] as! NSDictionary
-//        cell.textLabel?.text = rowData["title"] as? String
-//        cell.detailTextLabel?.text = rowData["artist"] as? String
-        
         
         var song = songs[indexPath.row]
         cell.artistLabel.text = song.artist
@@ -111,21 +154,6 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.yearLabel.text = song.public_time
         cell.timeLabel.text = song.length
         cell.pictureImage.image = UIImage(named: "music")
-        
-        
-        
-//        cell.pictureImage.layer.cornerRadius = cell.pictureImage.frame.size.width / 2
-//        cell.pictureImage.clipsToBounds = true
-        
-//        dispatch_async(dispatch_get_main_queue(), {
-//        cell.imageView?.image = UIImage(data: NSData(contentsOfURL: NSURL(string: rowData["picture"] as! String)!)!)
-//        })
-        
-//        Alamofire.request(.GET, song.picture).response() {
-//            (_, _, data, _) in
-//            let image = UIImage(data: data! as! NSData)
-//            cell.pictureImage.image = image
-//        }
         
         cell.pictureImage.hnk_setImageFromURL(NSURL(string: song.picture)!)
         
@@ -146,28 +174,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 self.iv.image = UIImage(data: data! as! NSData)
                 
             }
-            
-//            if let cell  = tableView.cellForRowAtIndexPath(indexPath) as? SongTableViewCell{
-//                cell.titleLabel.sizeToFit()
-//                var frame = cell.titleLabel.frame
-//                frame.origin.x = cell.frame.width
-//                cell.titleLabel.frame = frame
-//                
-//                UIView.beginAnimations("testAnimation", context: nil)
-//                UIView.setAnimationDuration(5)
-//                UIView.setAnimationCurve(UIViewAnimationCurve.Linear)
-//                UIView.setAnimationDelegate(self)
-//                UIView.setAnimationRepeatAutoreverses(false)
-//                UIView.setAnimationRepeatCount(2)
-//                
-//                frame = cell.titleLabel.frame
-//                frame.origin.x = -frame.size.width
-//                cell.titleLabel.frame = frame
-//                UIView.commitAnimations()
-//                
-//            }
-            
-            
+        
             lastIndex = indexPath.row
         }else{
             switch audioPlay.playbackState{
@@ -201,7 +208,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if let songsArray = result["song"] as? NSArray {
             self.tableData = songsArray
             self.tv.reloadData()
-            
+            self.songCollection.reloadData()
             songs = []
             for songInfo in songsArray{
                 var song = Song(url: "", picture: "", title:"",artist: "", length: songInfo["length"] as! Int,  public_time: "1976")
@@ -265,12 +272,9 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             }else if s < 60  {
                 time = "\(m):\(s)"
             }
-            
+
             self.playtime.text = time
         }
-       
-
-        
         
     }
     
@@ -293,6 +297,64 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     
     @IBAction func close(segue:UIStoryboardSegue) {
+        
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        return tableData.count
+    }
+    
+   
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CCell", forIndexPath: indexPath) as! SongCollectionViewCell
+        var song = songs[indexPath.row]
+        cell.songImage.image = UIImage(named: "music")
+        cell.songImage.hnk_setImageFromURL(NSURL(string: song.picture)!)
+//        println(indexPath.row)
+        return cell
+    }
+    
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if lastIndex != indexPath.row {
+            let rowData = tableData[indexPath.row] as! NSDictionary
+            let audioUrl = rowData["url"] as! String
+            onSetAudio(audioUrl)
+            
+            Alamofire.request(.GET, rowData["picture"] as! String).response() {
+                (_, _, data, _) in
+                self.iv.image = UIImage(data: data! as! NSData)
+                
+            }
+            
+            lastIndex = indexPath.row
+        }else{
+            switch audioPlay.playbackState{
+            case .Playing:
+                audioPlay.pause()
+                self.btnPlay.hidden = false
+            case .Paused:
+                audioPlay.play()
+                self.btnPlay.hidden = true
+            default :
+                break
+            }
+        }
+        
+        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
+        
+//        collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+        
+        
+    }
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
         
     }
     
