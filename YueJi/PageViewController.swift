@@ -13,8 +13,6 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         // Do any additional setup after loading the view.
         dataSource = self
         if let startingViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
@@ -27,6 +25,7 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     
@@ -37,7 +36,6 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
         switch index{
         case 0:
             if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
-            
                 return page3Content
             }
             
@@ -121,5 +119,8 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
 
 }
