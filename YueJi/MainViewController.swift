@@ -92,7 +92,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 if let pageDelegate = storyboard?.instantiateViewControllerWithIdentifier("PageContent2ViewController") as? PageContent2ViewController{
 //                    pageDelegate.delegate = self
 //                    pageDelegate.didReceiving()
-                    self.presentViewController(pageViewContrller, animated: true, completion: nil)
+                    
+                    self.presentViewController(pageViewContrller, animated: true, completion: {self.loadData()})
                 }
                 
                 
@@ -102,6 +103,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
+    
+    
     func loadData(){
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -110,10 +113,13 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
     }
     
+    
     func walkthroughDidFinish() {
         println("lsb")
         loadData()
     }
+    
+
     
     
     
@@ -130,6 +136,8 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 //            songTableView.rowHeight = UITableViewAutomaticDimension
 //        }
 //    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -278,9 +286,7 @@ class MainViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
     }
     
-    func onSetImage(url:String) {
-        
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         lastIndex = 0

@@ -12,7 +12,7 @@ protocol walkthroughFinish{
 }
 class PageContent2ViewController: UIViewController {
     var delegate:walkthroughFinish?
-    
+    var timer:NSTimer?
     
     @IBOutlet weak var cdImage: UIImageView!
     
@@ -46,6 +46,7 @@ class PageContent2ViewController: UIViewController {
         UIView.animateWithDuration(0.7, delay: 3, options: nil, animations: { () -> Void in
             self.view.transform = CGAffineTransformMakeScale(3, 3)
             self.view.alpha = 0
+            
             }, completion: {(done:Bool) -> Void in
                 
                 self.dismissViewControllerAnimated(true, completion: {
@@ -58,8 +59,6 @@ class PageContent2ViewController: UIViewController {
 
         
     }
-    
-    var done:Bool = false
     
     
     
@@ -83,7 +82,7 @@ class PageContent2ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
