@@ -25,8 +25,6 @@ class SongTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        
-        
 
     }
 
@@ -35,5 +33,9 @@ class SongTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+
+    
+
 
 }

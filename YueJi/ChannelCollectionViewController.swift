@@ -59,6 +59,9 @@ class ChannelCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+
+    
 
     // MARK: UICollectionViewDelegate
 

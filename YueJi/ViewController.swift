@@ -112,7 +112,7 @@ class ViewController: UIViewController,NSXMLParserDelegate,UITableViewDataSource
         self.audioPlay.stop()
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
     }
     
     func onUpdate(){

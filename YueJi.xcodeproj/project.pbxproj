@@ -22,7 +22,6 @@
 		01F3AB801B34F29D00AB150F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7A1B34F29D00AB150F /* SongTableViewCell.swift */; };
 		01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7B1B34F29D00AB150F /* TabViewController.swift */; };
 		01F3AB821B34F29D00AB150F /* ChanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7C1B34F29D00AB150F /* ChanelViewController.swift */; };
-		01F3AB831B34F29D00AB150F /* ChannelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7D1B34F29D00AB150F /* ChannelDataSource.swift */; };
 		01F3AB841B34F29D00AB150F /* ChannelCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7E1B34F29D00AB150F /* ChannelCollectionViewController.swift */; };
 		01F3AB851B34F29D00AB150F /* ChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7F1B34F29D00AB150F /* ChannelCollectionViewCell.swift */; };
 		01F3AB871B34F2D100AB150F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB861B34F2D100AB150F /* MainViewController.swift */; };
@@ -61,7 +60,6 @@
 		01F3AB7A1B34F29D00AB150F /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		01F3AB7B1B34F29D00AB150F /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		01F3AB7C1B34F29D00AB150F /* ChanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChanelViewController.swift; sourceTree = "<group>"; };
-		01F3AB7D1B34F29D00AB150F /* ChannelDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelDataSource.swift; sourceTree = "<group>"; };
 		01F3AB7E1B34F29D00AB150F /* ChannelCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewController.swift; sourceTree = "<group>"; };
 		01F3AB7F1B34F29D00AB150F /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
 		01F3AB861B34F2D100AB150F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +97,15 @@
 			name = WalkThrough;
 			sourceTree = "<group>";
 		};
+		0183A8671B50F33D00CDD7C7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				019782C51B326E6100168223 /* HttpController.swift */,
+				019782C91B329E3F00168223 /* SongParser.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		019782971B326BF900168223 = {
 			isa = PBXGroup;
 			children = (
@@ -122,11 +129,8 @@
 		019782A21B326BF900168223 /* YueJi */ = {
 			isa = PBXGroup;
 			children = (
-				019782A51B326BF900168223 /* AppDelegate.swift */,
-				019782A71B326BF900168223 /* ViewController.swift */,
 				019782A91B326BF900168223 /* Main.storyboard */,
-				019782AC1B326BF900168223 /* Images.xcassets */,
-				019782AE1B326BF900168223 /* LaunchScreen.xib */,
+				019782A71B326BF900168223 /* ViewController.swift */,
 				019782A31B326BF900168223 /* Supporting Files */,
 			);
 			path = YueJi;
@@ -135,10 +139,12 @@
 		019782A31B326BF900168223 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				019782A51B326BF900168223 /* AppDelegate.swift */,
+				019782AE1B326BF900168223 /* LaunchScreen.xib */,
+				0183A8671B50F33D00CDD7C7 /* Helper */,
+				019782AC1B326BF900168223 /* Images.xcassets */,
 				010DBE331B3BA91D0017F47E /* WalkThrough */,
 				01F3AB771B34F24F00AB150F /* music */,
-				019782C51B326E6100168223 /* HttpController.swift */,
-				019782C91B329E3F00168223 /* SongParser.swift */,
 				019782A41B326BF900168223 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -170,7 +176,6 @@
 				01F3AB7C1B34F29D00AB150F /* ChanelViewController.swift */,
 				01F3AB861B34F2D100AB150F /* MainViewController.swift */,
 				01F3AB881B35066600AB150F /* SongCollectionViewCell.swift */,
-				01F3AB7D1B34F29D00AB150F /* ChannelDataSource.swift */,
 				01F3AB7E1B34F29D00AB150F /* ChannelCollectionViewController.swift */,
 				01F3AB7F1B34F29D00AB150F /* ChannelCollectionViewCell.swift */,
 			);
@@ -358,7 +363,6 @@
 				019782C61B326E6100168223 /* HttpController.swift in Sources */,
 				01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */,
 				01F3AB791B34F27800AB150F /* Song.swift in Sources */,
-				01F3AB831B34F29D00AB150F /* ChannelDataSource.swift in Sources */,
 				01F3AB821B34F29D00AB150F /* ChanelViewController.swift in Sources */,
 				01F3AB891B35066600AB150F /* SongCollectionViewCell.swift in Sources */,
 				010DBE391B3BA9390017F47E /* PageViewController.swift in Sources */,

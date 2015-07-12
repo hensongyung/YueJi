@@ -28,7 +28,7 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         channelTableView.backgroundView = UIImageView(image: imageFile)
         
-        channelData = ChannelDataSource.channelDataSource
+//        channelData = ChannelDataSource.channelDataSource
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,6 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
 //        let rowDataq = channelData[indexPath.row] as! [AnyObject]
         
         cell.textLabel?.text = rowData["name"] as? String
-        
         
         return cell
     }
@@ -78,8 +77,16 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
             completion: nil)
     }
     
+        override var preferredContentSize: CGSize {
+            get{
+                return channelTableView.sizeThatFits(presentingViewController!.view.bounds.size)
+            }
+            set{ super.preferredContentSize = newValue}
+        }
+    
 
-
+    
+    
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //        // Get the new view controller using segue.destinationViewController.
 //        // Pass the selected object to the new view controller.
