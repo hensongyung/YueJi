@@ -52,6 +52,7 @@ class ViewController: UIViewController,NSXMLParserDelegate,UITableViewDataSource
         
     }
     
+    
     func parserUrl(songName:String){
         self.songUrls = []
         let feedParser = SongParser()

@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0106CAF51B61D89D002D7385 /* MainBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106CAF41B61D89D002D7385 /* MainBackgroundImage.swift */; };
 		010DBE371B3BA9390017F47E /* PageContent1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010DBE341B3BA9390017F47E /* PageContent1ViewController.swift */; };
 		010DBE381B3BA9390017F47E /* PageContent2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010DBE351B3BA9390017F47E /* PageContent2ViewController.swift */; };
 		010DBE391B3BA9390017F47E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010DBE361B3BA9390017F47E /* PageViewController.swift */; };
+		0110D1AC1B610AD4000F67B3 /* EkoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110D1AB1B610AD4000F67B3 /* EkoImage.swift */; };
 		019782A61B326BF900168223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A51B326BF900168223 /* AppDelegate.swift */; };
 		019782A81B326BF900168223 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A71B326BF900168223 /* ViewController.swift */; };
 		019782AB1B326BF900168223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 019782A91B326BF900168223 /* Main.storyboard */; };
@@ -40,9 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0106CAF41B61D89D002D7385 /* MainBackgroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBackgroundImage.swift; sourceTree = "<group>"; };
 		010DBE341B3BA9390017F47E /* PageContent1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContent1ViewController.swift; sourceTree = "<group>"; };
 		010DBE351B3BA9390017F47E /* PageContent2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContent2ViewController.swift; sourceTree = "<group>"; };
 		010DBE361B3BA9390017F47E /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		0110D1AB1B610AD4000F67B3 /* EkoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EkoImage.swift; sourceTree = "<group>"; };
 		0189154403A886477197DC0D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		019782A01B326BF900168223 /* YueJi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YueJi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		019782A41B326BF900168223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0106CAF31B61D4B0002D7385 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0110D1AB1B610AD4000F67B3 /* EkoImage.swift */,
+				0106CAF41B61D89D002D7385 /* MainBackgroundImage.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		010DBE331B3BA91D0017F47E /* WalkThrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,8 @@
 			children = (
 				019782A91B326BF900168223 /* Main.storyboard */,
 				019782A71B326BF900168223 /* ViewController.swift */,
+				0106CAF31B61D4B0002D7385 /* View */,
+				01F3AB771B34F24F00AB150F /* music */,
 				019782A31B326BF900168223 /* Supporting Files */,
 			);
 			path = YueJi;
@@ -144,7 +159,6 @@
 				0183A8671B50F33D00CDD7C7 /* Helper */,
 				019782AC1B326BF900168223 /* Images.xcassets */,
 				010DBE331B3BA91D0017F47E /* WalkThrough */,
-				01F3AB771B34F24F00AB150F /* music */,
 				019782A41B326BF900168223 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -362,9 +376,11 @@
 				019782CA1B329E3F00168223 /* SongParser.swift in Sources */,
 				019782C61B326E6100168223 /* HttpController.swift in Sources */,
 				01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */,
+				0110D1AC1B610AD4000F67B3 /* EkoImage.swift in Sources */,
 				01F3AB791B34F27800AB150F /* Song.swift in Sources */,
 				01F3AB821B34F29D00AB150F /* ChanelViewController.swift in Sources */,
 				01F3AB891B35066600AB150F /* SongCollectionViewCell.swift in Sources */,
+				0106CAF51B61D89D002D7385 /* MainBackgroundImage.swift in Sources */,
 				010DBE391B3BA9390017F47E /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

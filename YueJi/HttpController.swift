@@ -15,7 +15,7 @@ protocol HttpProtocol {
 
 class HttpController: NSObject {
     var delegate:HttpProtocol?
-    
+
     func onSearch(url:String) {
         Alamofire.request(.GET, url).responseJSON() {
             (_, _, data, _) in

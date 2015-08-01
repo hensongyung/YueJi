@@ -51,6 +51,7 @@ class ChannelCollectionViewController: UICollectionViewController {
         //#warning Incomplete method implementation -- Return the number of items in the section
         return 20
     }
+    
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ChannelCollectionViewCell
