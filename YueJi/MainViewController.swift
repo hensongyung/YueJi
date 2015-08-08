@@ -16,9 +16,14 @@ import iCarousel
 
 class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopoverPresentationControllerDelegate, iCarouselDataSource,iCarouselDelegate {
     
+    let cache = KingfisherManager.sharedManager.cache
+    
+    
     var songs:[Song] = []
     
     var eHttp = HttpController()
+    
+    
     
     @IBOutlet var tap: UITapGestureRecognizer! = nil
     @IBAction func onTap(sender: UITapGestureRecognizer) {
@@ -72,6 +77,10 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "loadMain", userInfo: nil, repeats: false)
+        
+        cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
+            println("disk size in bytes: \(size)")
+        }
     }
 
     func loadMain(){
