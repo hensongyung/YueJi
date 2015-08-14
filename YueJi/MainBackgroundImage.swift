@@ -14,6 +14,9 @@ class MainBackgroundImage: UIImageView {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let blurEffectView =  UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
+//        println(blurEffectView.frame)
+//        println(self.frame)
+//        println(self.bounds)
         self.addSubview(blurEffectView)
         
     }

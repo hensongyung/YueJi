@@ -11,7 +11,7 @@ import Alamofire
 import MediaPlayer
 
 
-class ViewController: UIViewController,NSXMLParserDelegate,UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating,UISearchBarDelegate {
+class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewDataSource,UITableViewDelegate,UISearchResultsUpdating,UISearchBarDelegate {
     
     var searchController:UISearchController!
     
@@ -41,6 +41,7 @@ class ViewController: UIViewController,NSXMLParserDelegate,UITableViewDataSource
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.sizeToFit()
         table.tableHeaderView = searchController.searchBar
+        
         definesPresentationContext = true
         
         searchController.searchResultsUpdater = self

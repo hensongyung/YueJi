@@ -13,7 +13,7 @@ import Alamofire
 //import AVFoundation
 import Kingfisher
 import iCarousel
-
+import BRYXBanner
 class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopoverPresentationControllerDelegate, iCarouselDataSource,iCarouselDelegate {
     
     let cache = KingfisherManager.sharedManager.cache
@@ -23,6 +23,8 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     var eHttp = HttpController()
     
+    
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
     
     
     @IBOutlet var tap: UITapGestureRecognizer! = nil
@@ -43,7 +45,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 
     @IBOutlet weak var btnPlay: UIImageView!
     
-
+    let banner = Banner(title: "This is a test", subtitle: "lsb", image: UIImage(named: "music"), backgroundColor: UIColor.clearColor(), didTapBlock: nil)
     var timer:NSTimer?
     var tableData  = NSArray()
     var channelData = NSArray()
@@ -58,33 +60,41 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     
     
+//    override func viewDidAppear(animated: Bool) {
+//        blurEffectView.frame = iv.bounds
+//        iv.addSubview(blurEffectView)
+//        println("lsb")
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         eHttp.delegate = self
         iv.addGestureRecognizer(tap!)
         iv.image = UIImage(named:"music")
+        
         cdImage.image = UIImage(named: "music")
         
 //        songTableView.estimatedRowHeight = 60
 //        songTableView.rowHeight = UITableViewAutomaticDimension
-        
         carsousel.type = iCarouselType.CoverFlow
 //        let size = carsousel.bounds
 //        let image = UIImageView(frame: size)
 //        image.image = UIImage(named: "background")
 //        carsousel.addSubview(image)
-    
         
+    
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "loadMain", userInfo: nil, repeats: false)
         
-        cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
-            println("disk size in bytes: \(size)")
-        }
     }
 
     func loadMain(){
         let defaults = NSUserDefaults.standardUserDefaults()
+        blurEffectView.frame = iv.bounds
+        iv.addSubview(blurEffectView)
+        cdImage.layer.cornerRadius = cdImage.frame.size.width / 2
+        
+        banner.show(duration: 2.0)
         if defaults.boolForKey("hasViewWalkthrough") == false {
             
             //设置引导页
@@ -317,6 +327,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         
         return newView
     }
+ 
     
     func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int){
         if lastIndex != index {
@@ -329,7 +340,9 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 self.iv.image = UIImage(data: data! as NSData)
                 self.cdImage.image = UIImage(data: data! as NSData)
 //                self.cdImage.layer.removeAllAnimations()
+                
             }
+            
             
             lastIndex = index
         }else{
