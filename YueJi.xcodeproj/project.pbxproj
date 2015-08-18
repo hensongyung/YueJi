@@ -29,6 +29,7 @@
 		01F3AB871B34F2D100AB150F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB861B34F2D100AB150F /* MainViewController.swift */; };
 		01F3AB891B35066600AB150F /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB881B35066600AB150F /* SongCollectionViewCell.swift */; };
 		01F53F4C1B78D1DF00CDDBA4 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */; };
+		01FD96451B82C4B1000BD742 /* SongData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD96441B82C4B1000BD742 /* SongData.swift */; };
 		2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		01F3AB861B34F2D100AB150F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01F3AB881B35066600AB150F /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
 		01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		01FD96441B82C4B1000BD742 /* SongData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongData.swift; sourceTree = "<group>"; };
 		43A44D0C5D0DA47AB5A1686C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8461B78FBA853C35C2A23D5E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,8 +149,10 @@
 				019782A91B326BF900168223 /* Main.storyboard */,
 				019782A71B326BF900168223 /* searchViewController.swift */,
 				0106CAF31B61D4B0002D7385 /* View */,
-				01F3AB771B34F24F00AB150F /* music */,
-				01F53F4A1B78D1B500CDDBA4 /* favourites */,
+				01F3AB771B34F24F00AB150F /* Music */,
+				01F53F4A1B78D1B500CDDBA4 /* Favourites */,
+				01FD96431B82C468000BD742 /* Data */,
+				010DBE331B3BA91D0017F47E /* WalkThrough */,
 				019782A31B326BF900168223 /* Supporting Files */,
 			);
 			path = YueJi;
@@ -161,7 +165,6 @@
 				019782AE1B326BF900168223 /* LaunchScreen.xib */,
 				0183A8671B50F33D00CDD7C7 /* Helper */,
 				019782AC1B326BF900168223 /* Images.xcassets */,
-				010DBE331B3BA91D0017F47E /* WalkThrough */,
 				019782A41B326BF900168223 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -184,7 +187,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		01F3AB771B34F24F00AB150F /* music */ = {
+		01F3AB771B34F24F00AB150F /* Music */ = {
 			isa = PBXGroup;
 			children = (
 				01F3AB781B34F27800AB150F /* Song.swift */,
@@ -196,15 +199,23 @@
 				01F3AB7E1B34F29D00AB150F /* ChannelCollectionViewController.swift */,
 				01F3AB7F1B34F29D00AB150F /* ChannelCollectionViewCell.swift */,
 			);
-			name = music;
+			name = Music;
 			sourceTree = "<group>";
 		};
-		01F53F4A1B78D1B500CDDBA4 /* favourites */ = {
+		01F53F4A1B78D1B500CDDBA4 /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
 				01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */,
 			);
-			name = favourites;
+			name = Favourites;
+			sourceTree = "<group>";
+		};
+		01FD96431B82C468000BD742 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				01FD96441B82C4B1000BD742 /* SongData.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		483BEF2A829E46B76B035310 /* Pods */ = {
@@ -386,6 +397,7 @@
 				019782A81B326BF900168223 /* searchViewController.swift in Sources */,
 				019782A61B326BF900168223 /* AppDelegate.swift in Sources */,
 				019782CA1B329E3F00168223 /* SongParser.swift in Sources */,
+				01FD96451B82C4B1000BD742 /* SongData.swift in Sources */,
 				019782C61B326E6100168223 /* HttpController.swift in Sources */,
 				01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */,
 				0110D1AC1B610AD4000F67B3 /* EkoImage.swift in Sources */,

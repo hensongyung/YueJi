@@ -13,7 +13,8 @@ import Alamofire
 //import AVFoundation
 import Kingfisher
 import iCarousel
-import BRYXBanner
+//import BRYXBanner
+import RealmSwift
 class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopoverPresentationControllerDelegate, iCarouselDataSource,iCarouselDelegate {
     
     let cache = KingfisherManager.sharedManager.cache
@@ -41,11 +42,12 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             iv.removeGestureRecognizer(tap)
             btnPlay.addGestureRecognizer(tap)
         }
+        
     }
 
     @IBOutlet weak var btnPlay: UIImageView!
     
-    let banner = Banner(title: "This is a test", subtitle: "lsb", image: UIImage(named: "music"), backgroundColor: UIColor.clearColor(), didTapBlock: nil)
+
     var timer:NSTimer?
     var tableData  = NSArray()
     var channelData = NSArray()
@@ -58,6 +60,18 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     @IBOutlet weak var playtime: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
+    @IBAction func like(sender: UIButton) {
+        
+//        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.8, options: nil, animations: {
+//                self.likeButton.transform = CGAffineTransformMakeScale(1.5, 1.5)
+//            }) { (Bool) -> Void in
+//            self.likeButton.imageView?.image = UIImage(named: "Liked")
+//            UIView.animateWithDuration(0.5, animations: { () -> Void in
+//                self.likeButton.transform = CGAffineTransformMakeScale(1, 1)
+//            })
+//        }
+    }
     
     
 //    override func viewDidAppear(animated: Bool) {
@@ -68,6 +82,15 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        let songData = SongData()
+//        songData.url = "lsb"
+//        let realm = Realm()
+//        realm.write { () -> Void in
+//            realm.deleteAll()
+//        }
+
         
         eHttp.delegate = self
         iv.addGestureRecognizer(tap!)
@@ -86,6 +109,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "loadMain", userInfo: nil, repeats: false)
         
+        
     }
 
     func loadMain(){
@@ -93,8 +117,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         blurEffectView.frame = iv.bounds
         iv.addSubview(blurEffectView)
         cdImage.layer.cornerRadius = cdImage.frame.size.width / 2
-        
-        banner.show(duration: 2.0)
+
         if defaults.boolForKey("hasViewWalkthrough") == false {
             
             //设置引导页

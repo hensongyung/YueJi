@@ -8,18 +8,21 @@
 
 import UIKit
 import DZNEmptyDataSet
-
+import RealmSwift
 
 class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate,UITableViewDataSource,UITableViewDelegate {
 
-
-
+    let song = Realm(path: Realm.defaultPath).objects(SongData)
+    
     @IBOutlet weak var tableView: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println(song.valueForKey("url"))
+        
+        
+        
         // Do any additional setup after loading the view.
         self.tableView.emptyDataSetSource = self;
         self.tableView.emptyDataSetDelegate = self;
@@ -73,6 +76,10 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
         let cell = tableView.dequeueReusableCellWithIdentifier("FavouriteCell") as! UITableViewCell
         cell.textLabel?.text = "lsb"
         return cell
+        
+    }
+    
+    private func populate(){
         
     }
 
