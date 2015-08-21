@@ -29,6 +29,8 @@
 		01F3AB871B34F2D100AB150F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB861B34F2D100AB150F /* MainViewController.swift */; };
 		01F3AB891B35066600AB150F /* SongCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB881B35066600AB150F /* SongCollectionViewCell.swift */; };
 		01F53F4C1B78D1DF00CDDBA4 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */; };
+		01F5645A1B86FB4000BA154C /* searchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F564591B86FB4000BA154C /* searchDetailViewController.swift */; };
+		01F71CBA1B84552200F4ACBE /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */; };
 		01FD96451B82C4B1000BD742 /* SongData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD96441B82C4B1000BD742 /* SongData.swift */; };
 		2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		01F3AB861B34F2D100AB150F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01F3AB881B35066600AB150F /* SongCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCollectionViewCell.swift; sourceTree = "<group>"; };
 		01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		01F564591B86FB4000BA154C /* searchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchDetailViewController.swift; sourceTree = "<group>"; };
+		01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		01FD96441B82C4B1000BD742 /* SongData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongData.swift; sourceTree = "<group>"; };
 		43A44D0C5D0DA47AB5A1686C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8461B78FBA853C35C2A23D5E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,10 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				019782A91B326BF900168223 /* Main.storyboard */,
-				019782A71B326BF900168223 /* searchViewController.swift */,
 				0106CAF31B61D4B0002D7385 /* View */,
 				01F3AB771B34F24F00AB150F /* Music */,
 				01F53F4A1B78D1B500CDDBA4 /* Favourites */,
+				01F564581B86BD4200BA154C /* SearchView */,
 				01FD96431B82C468000BD742 /* Data */,
 				010DBE331B3BA91D0017F47E /* WalkThrough */,
 				019782A31B326BF900168223 /* Supporting Files */,
@@ -206,8 +210,18 @@
 			isa = PBXGroup;
 			children = (
 				01F53F4B1B78D1DF00CDDBA4 /* FavouriteViewController.swift */,
+				01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */,
 			);
 			name = Favourites;
+			sourceTree = "<group>";
+		};
+		01F564581B86BD4200BA154C /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				019782A71B326BF900168223 /* searchViewController.swift */,
+				01F564591B86FB4000BA154C /* searchDetailViewController.swift */,
+			);
+			name = SearchView;
 			sourceTree = "<group>";
 		};
 		01FD96431B82C468000BD742 /* Data */ = {
@@ -390,9 +404,11 @@
 				010DBE381B3BA9390017F47E /* PageContent2ViewController.swift in Sources */,
 				01F3AB841B34F29D00AB150F /* ChannelCollectionViewController.swift in Sources */,
 				01F3AB801B34F29D00AB150F /* SongTableViewCell.swift in Sources */,
+				01F71CBA1B84552200F4ACBE /* FavouriteTableViewCell.swift in Sources */,
 				010DBE371B3BA9390017F47E /* PageContent1ViewController.swift in Sources */,
 				01F53F4C1B78D1DF00CDDBA4 /* FavouriteViewController.swift in Sources */,
 				01F3AB851B34F29D00AB150F /* ChannelCollectionViewCell.swift in Sources */,
+				01F5645A1B86FB4000BA154C /* searchDetailViewController.swift in Sources */,
 				01F3AB871B34F2D100AB150F /* MainViewController.swift in Sources */,
 				019782A81B326BF900168223 /* searchViewController.swift in Sources */,
 				019782A61B326BF900168223 /* AppDelegate.swift in Sources */,

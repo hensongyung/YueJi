@@ -15,6 +15,7 @@ import Kingfisher
 import iCarousel
 //import BRYXBanner
 import RealmSwift
+
 class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopoverPresentationControllerDelegate, iCarouselDataSource,iCarouselDelegate {
     
     let cache = KingfisherManager.sharedManager.cache
@@ -28,24 +29,21 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
     
     
+    
     @IBOutlet var tap: UITapGestureRecognizer! = nil
     @IBAction func onTap(sender: UITapGestureRecognizer) {
         
-        if sender.view == btnPlay {
-            btnPlay.hidden = true
-            audioPlay.play()
-            btnPlay.removeGestureRecognizer(tap)
-            iv.addGestureRecognizer(tap)
-        }else if sender.view == iv{
-            btnPlay.hidden = false
+        if audioPlay.playbackState == MPMoviePlaybackState.Playing {
             audioPlay.pause()
-            iv.removeGestureRecognizer(tap)
-            btnPlay.addGestureRecognizer(tap)
+            cdImage.pauseLayer()
+        }else{
+            audioPlay.play()
+            cdImage.resumeLayer()
         }
-        
     }
+    
+    
 
-    @IBOutlet weak var btnPlay: UIImageView!
     
 
     var timer:NSTimer?
@@ -63,35 +61,42 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     @IBOutlet weak var likeButton: UIButton!
     @IBAction func like(sender: UIButton) {
         
-//        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.8, options: nil, animations: {
-//                self.likeButton.transform = CGAffineTransformMakeScale(1.5, 1.5)
-//            }) { (Bool) -> Void in
-//            self.likeButton.imageView?.image = UIImage(named: "Liked")
-//            UIView.animateWithDuration(0.5, animations: { () -> Void in
-//                self.likeButton.transform = CGAffineTransformMakeScale(1, 1)
-//            })
-//        }
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: nil, animations: {
+                self.likeButton.transform = CGAffineTransformMakeScale(1.5, 1.5)
+            }) { (Bool) -> Void in
+            self.likeButton.imageView?.image = UIImage(named: "Liked")
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.likeButton.transform = CGAffineTransformMakeScale(1, 1)
+                self.likeButton.imageView?.image = UIImage(named: "Liked")
+            })
+                let createdTime = NSDate()
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.setLocalizedDateFormatFromTemplate("YYYYMMdd")
+
+                let songData = SongData()
+                songData.url = self.songs[self.lastIndex].url
+                songData.picture = self.songs[self.lastIndex].picture
+                songData.title = self.songs[self.lastIndex].title
+                songData.artist = self.songs[self.self.lastIndex].artist
+                songData.createdTime = dateFormatter.stringFromDate(createdTime)
+                
+                let realm = Realm()
+                realm.write({ () -> Void in
+                    realm.add(songData)
+                })
+        }
     }
     
-    
-//    override func viewDidAppear(animated: Bool) {
-//        blurEffectView.frame = iv.bounds
-//        iv.addSubview(blurEffectView)
-//        println("lsb")
-//    }
-
+    override func viewDidAppear(animated: Bool) {
+        if audioPlay.playbackState == MPMoviePlaybackState.Playing {
+            cdImage.onRotacion()
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        let songData = SongData()
-//        songData.url = "lsb"
-//        let realm = Realm()
-//        realm.write { () -> Void in
-//            realm.deleteAll()
-//        }
 
-        
+        cdImage.addGestureRecognizer(tap)
         eHttp.delegate = self
         iv.addGestureRecognizer(tap!)
         iv.image = UIImage(named:"music")
@@ -278,6 +283,8 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 
     @IBOutlet var carsousel: iCarousel!
     
+    
+//    var song:Song!
     var imageView: UIImageView!
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView!
     {
@@ -325,7 +332,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             label.textAlignment = .Center
             
 //            label.font = label.font.fontWithSize(18)
-            label.font = UIFont.boldSystemFontOfSize(18)
+            label.font = UIFont.boldSystemFontOfSize(15)
             
             label.textColor = UIColor.blueColor()
             
@@ -362,8 +369,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 (_, _, data, _) in
                 self.iv.image = UIImage(data: data! as NSData)
                 self.cdImage.image = UIImage(data: data! as NSData)
-//                self.cdImage.layer.removeAllAnimations()
-                
+                self.cdImage.onRotacion()
             }
             
             
@@ -372,10 +378,10 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             switch audioPlay.playbackState{
             case .Playing:
                 audioPlay.pause()
-                self.btnPlay.hidden = false
+                cdImage.pauseLayer()
             case .Paused:
                 audioPlay.play()
-                self.btnPlay.hidden = true
+                cdImage.resumeLayer()
             default :
                 break
             }

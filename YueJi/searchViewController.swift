@@ -19,6 +19,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     var songUrls:[String] = []
     
     @IBOutlet weak var table: UITableView!
+    
     var audioPlay = MPMoviePlayerController()
     
     var songItems:[(encode: String, decode: String, lrcid: String)] = []
@@ -30,8 +31,8 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     }
     
     
+    var searchKeyStr = "一生中最爱"
     
-    var s = "一生中最爱".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +48,10 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        parserUrl(s)
+//        parserUrl(searchStr)
+        parserUrl(searchKeyStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
         
-        
+        table.tableFooterView = UIView.new()
         
     }
     
@@ -60,7 +62,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         feedParser.parseFeed("http://box.zhangmen.baidu.com/x?op=12&count=1&title=\(songName)$$", completionHandler: { (songItems: [(encode: String, decode: String, lrcid: String)]) -> Void in
         
         self.songItems = songItems
-        println(songItems)
+//        println(songItems)
         for song in songItems {
             if let nameMatch = song.encode.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch){
             let encodeurl = song.encode.substringToIndex(nameMatch.startIndex)
@@ -83,7 +85,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return songUrls.count
+        return songItems.count
     }
     
 
@@ -92,17 +94,19 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
         if songItems.count > indexPath.row {
-            cell.textLabel?.text = songItems[indexPath.row].lrcid
-
+//            cell.textLabel?.text = songItems[indexPath.row].lrcid
+            cell.textLabel?.text =  "\(indexPath.row + 1)" + searchKeyStr
             return cell
         }
-        
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        onSetAudio(songUrls[indexPath.row])
+        if songUrls.count > indexPath.row{
+           onSetAudio(songUrls[indexPath.row])
+        }
+        
     }
     
     
@@ -110,27 +114,27 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     
     func onSetAudio(url:String){
         timer?.invalidate()
-//        playtime.text = "00:00"
         self.audioPlay.stop()
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
-//        timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
+
     }
     
-    func onUpdate(){
-        
-    }
     
     
     func updateSearchResultsForSearchController(searchController: UISearchController){
 //        songName = searchController.searchBar.text
 //        parserUrl(songName)
         
-        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
+            searchKeyStr = searchBar.text
             parserUrl(searchBar.text.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+    }
+    
+    @IBAction func close(segue:UIStoryboardSegue) {
+        
     }
     
 }

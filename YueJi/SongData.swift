@@ -17,11 +17,9 @@ class SongData: Object {
 //  }
     
     dynamic var url = ""
-//    dynamic var title = ""
-//    dynamic var picture = ""
-//    dynamic var artist = ""
-//    dynamic var length = ""
-//    dynamic var like = false
-//    dynamic var public_time = ""
-//    dynamic var created = NSDate()
+    dynamic var title = ""
+    dynamic var picture = ""
+    dynamic var artist = ""
+    dynamic var discription = ""
+    dynamic var createdTime = ""
 }

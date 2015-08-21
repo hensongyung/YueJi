@@ -35,9 +35,26 @@ class EkoImage: UIImageView {
         animation.toValue = M_PI * 2
         animation.duration = 20
         animation.repeatCount = 10000
-        self.layer.addAnimation(animation, forKey: nil)
+        self.layer.addAnimation(animation, forKey: "onRotation")
         
     }
+    
+    func pauseLayer(){
+        let pausedTime  =  layer.convertTime(CACurrentMediaTime(), fromLayer: nil)
+        layer.speed = 0.0
+        layer.timeOffset = pausedTime
+        
+    }
+    
+    func resumeLayer(){
+        let pausedTime = layer.timeOffset
+        layer.speed = 1.0
+        layer.timeOffset = 0.0
+        layer.beginTime = 0.0
+        let timeSincePause = layer.convertTime(CACurrentMediaTime(), fromLayer: nil) - pausedTime
+        layer.beginTime = timeSincePause
+    }
+    
 
     /*
     // Only override drawRect: if you perform custom drawing.
