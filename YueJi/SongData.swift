@@ -20,6 +20,9 @@ class SongData: Object {
     dynamic var title = ""
     dynamic var picture = ""
     dynamic var artist = ""
-    dynamic var discription = ""
+    dynamic var detailFeeling = ""
     dynamic var createdTime = ""
+    dynamic var localPicture = NSData()
+    
+    
 }

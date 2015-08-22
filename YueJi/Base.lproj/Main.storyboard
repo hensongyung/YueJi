@@ -23,16 +23,16 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="VwV-DS-e9N">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="VwV-DS-e9N" customClass="searchTableViewCell" customModule="YueJi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VwV-DS-e9N" id="K8m-YS-GTp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-ts-tZO">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DU-ts-tZO">
                                                     <rect key="frame" x="577" y="11" width="22" height="22"/>
                                                     <connections>
-                                                        <segue destination="sak-D5-zJR" kind="presentation" id="ojd-mo-aLk"/>
+                                                        <segue destination="sak-D5-zJR" kind="presentation" identifier="detailSegue" id="ojd-mo-aLk"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -41,6 +41,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="1DU-ts-tZO" secondAttribute="trailing" constant="-7" id="p5V-gD-m5o"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="1DU-ts-tZO" id="49a-aJ-G5C"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -58,9 +61,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="Rbw-j8-67Z"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="BUQ-N9-seb"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="58P-u0-OnL" id="zoN-cN-xbR"/>
@@ -68,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="182"/>
+            <point key="canvasLocation" x="18" y="174"/>
         </scene>
         <!--Search Detail View Controller-->
         <scene sceneID="m1w-tb-aPv">
@@ -91,29 +92,36 @@
                                                 <segue destination="7CR-mN-EQV" kind="unwind" unwindAction="close:" id="BLd-R4-k40"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="XaD-EF-J6d"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="XaD-EF-J6d">
+                                            <connections>
+                                                <action selector="saveBarButton:" destination="sak-D5-zJR" id="7JQ-nB-3qE"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hES-wC-q2P">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hES-wC-q2P">
                                 <rect key="frame" x="120" y="292" width="360" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="XKD-Ky-vVq">
-                                <rect key="frame" x="120" y="320" width="360" height="259.5"/>
-                                <color key="backgroundColor" white="0.87215597587719285" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="TZC-OR-BIh">
+                            <imageView contentMode="scaleToFill" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="TZC-OR-BIh">
                                 <rect key="frame" x="120" y="44" width="360" height="240"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ztd-vb-r2U" appends="YES" id="k9M-Cv-aYT"/>
                                 </connections>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="XKD-Ky-vVq">
+                                <rect key="frame" x="120" y="320" width="360" height="259.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sak-D5-zJR" id="1PF-lG-ydp"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,6 +154,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="60T-7U-859" id="y6a-qd-S9N"/>
                         <outlet property="detailTextField" destination="XKD-Ky-vVq" id="9M6-cX-vcQ"/>
                         <outlet property="songNameLabel" destination="hES-wC-q2P" id="pyl-Zp-RaL"/>
                         <outlet property="takePictureImage" destination="TZC-OR-BIh" id="2zz-VR-8zi"/>

@@ -27,7 +27,6 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view.
         self.tableView.emptyDataSetSource = self;
         self.tableView.emptyDataSetDelegate = self;
@@ -85,18 +84,25 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("FavouriteCell") as! FavouriteTableViewCell
-    
+        
         let inverse = self.song.count - 1 - indexPath.row
         if inverse  >= 0 {
             cell.titleLabel.text = song.valueForKey("title")![inverse] as? String
             cell.artistLabel.text = song.valueForKey("artist")![inverse] as? String
-            cell.discriptionLabel.text = song.valueForKey("discription")![inverse] as? String
-            cell.musicImage.kf_setImageWithURL(NSURL(string: song.valueForKey("picture")![inverse] as! String)!)
+            cell.discriptionLabel.text = song.valueForKey("detailFeeling")![inverse] as? String
+            
+            if let pictureUrl = song.valueForKey("picture")![inverse] as? String{
+                cell.musicImage.kf_setImageWithURL(NSURL(string: pictureUrl)!)
+                if cell.musicImage.image == nil {
+                    cell.musicImage.image = UIImage(data: song.valueForKey("localPicture")![inverse] as! NSData )
+                }
+            }
             cell.createTimeLabel.text = song.valueForKey("createdTime")![inverse] as? String
             return cell
         }else{
             return cell
         }
+        
         
         
     }
@@ -131,6 +137,7 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         onSetAudio((song.valueForKey("url")![indexPath.row] as? String)!)
+//        tableView.addSubview(view: UIImageView(image: UIImage(data: <#NSData#>)!))
     }
     
 

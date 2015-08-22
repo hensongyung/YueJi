@@ -20,6 +20,7 @@
 		019782BC1B326BF900168223 /* YueJiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782BB1B326BF900168223 /* YueJiTests.swift */; };
 		019782C61B326E6100168223 /* HttpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782C51B326E6100168223 /* HttpController.swift */; };
 		019782CA1B329E3F00168223 /* SongParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782C91B329E3F00168223 /* SongParser.swift */; };
+		01F1D8E31B889ACF00B708F3 /* searchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F1D8E21B889ACF00B708F3 /* searchTableViewCell.swift */; };
 		01F3AB791B34F27800AB150F /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB781B34F27800AB150F /* Song.swift */; };
 		01F3AB801B34F29D00AB150F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7A1B34F29D00AB150F /* SongTableViewCell.swift */; };
 		01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3AB7B1B34F29D00AB150F /* TabViewController.swift */; };
@@ -64,6 +65,7 @@
 		019782BB1B326BF900168223 /* YueJiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YueJiTests.swift; sourceTree = "<group>"; };
 		019782C51B326E6100168223 /* HttpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpController.swift; sourceTree = "<group>"; };
 		019782C91B329E3F00168223 /* SongParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongParser.swift; sourceTree = "<group>"; };
+		01F1D8E21B889ACF00B708F3 /* searchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchTableViewCell.swift; sourceTree = "<group>"; };
 		01F3AB781B34F27800AB150F /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		01F3AB7A1B34F29D00AB150F /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		01F3AB7B1B34F29D00AB150F /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				019782A71B326BF900168223 /* searchViewController.swift */,
+				01F1D8E21B889ACF00B708F3 /* searchTableViewCell.swift */,
 				01F564591B86FB4000BA154C /* searchDetailViewController.swift */,
 			);
 			name = SearchView;
@@ -418,6 +421,7 @@
 				01F3AB811B34F29D00AB150F /* TabViewController.swift in Sources */,
 				0110D1AC1B610AD4000F67B3 /* EkoImage.swift in Sources */,
 				01F3AB791B34F27800AB150F /* Song.swift in Sources */,
+				01F1D8E31B889ACF00B708F3 /* searchTableViewCell.swift in Sources */,
 				01F3AB821B34F29D00AB150F /* ChanelViewController.swift in Sources */,
 				01F3AB891B35066600AB150F /* SongCollectionViewCell.swift in Sources */,
 				0106CAF51B61D89D002D7385 /* MainBackgroundImage.swift in Sources */,

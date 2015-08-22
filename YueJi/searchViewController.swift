@@ -18,6 +18,8 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     
     var songUrls:[String] = []
     
+
+
     @IBOutlet weak var table: UITableView!
     
     var audioPlay = MPMoviePlayerController()
@@ -102,9 +104,13 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         return cell
     }
     
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if songUrls.count > indexPath.row{
            onSetAudio(songUrls[indexPath.row])
+            if let cell =  table.cellForRowAtIndexPath(indexPath) as? searchTableViewCell{
+                cell.addButton.hidden = false
+            }
         }
         
     }
@@ -117,7 +123,6 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         self.audioPlay.stop()
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
-
     }
     
     
@@ -134,6 +139,19 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     }
     
     @IBAction func close(segue:UIStoryboardSegue) {
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let indentifier = segue.identifier {
+            if indentifier == "detailSegue" {
+                if let destinationViewController = segue.destinationViewController as? searchDetailViewController{
+                    destinationViewController.songData.title = searchKeyStr
+                    destinationViewController.songData.url = songUrls[table.indexPathForSelectedRow()!.row]
+                    
+                }
+            }
+        }
         
     }
     
