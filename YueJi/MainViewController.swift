@@ -369,10 +369,11 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 (_, _, data, _) in
                 self.iv.image = UIImage(data: data! as NSData)
                 self.cdImage.image = UIImage(data: data! as NSData)
-                self.cdImage.onRotacion()
+                
             }
+            self.iv.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
             
-            
+            self.cdImage.onRotacion()
             lastIndex = index
         }else{
             switch audioPlay.playbackState{

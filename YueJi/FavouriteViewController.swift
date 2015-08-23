@@ -137,7 +137,6 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         onSetAudio((song.valueForKey("url")![indexPath.row] as? String)!)
-//        tableView.addSubview(view: UIImageView(image: UIImage(data: <#NSData#>)!))
     }
     
 

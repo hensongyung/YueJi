@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-
+import BRYXBanner
 class searchDetailViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate {
     
     var songData = SongData()
@@ -71,10 +71,17 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         let realm = Realm()
         realm.write { () -> Void in
             realm.add(self.songData)
-            println("success")
+            
+            self.dismissViewControllerAnimated(true, completion: {
+                let banner = Banner(title: "Success!", subtitle: "You can go to the Favourite Tab.", image: UIImage(named: "music"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:0.700))
+                banner.dismissesOnTap = true
+                banner.show(duration: 2.0)
+            })
+            
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,6 +102,8 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+                
+        
     }
     
     
