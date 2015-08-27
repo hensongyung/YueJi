@@ -25,6 +25,7 @@ class FavouriteTableViewCell: UITableViewCell {
 
         musicImage.clipsToBounds = true
         musicImage.layer.cornerRadius = musicImage.frame.height / 2
+//        titleLabel.textColor = UIColor(red: 50/255, green: 100/255, blue: 180/255, alpha: 1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

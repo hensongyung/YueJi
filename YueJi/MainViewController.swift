@@ -13,7 +13,7 @@ import Alamofire
 //import AVFoundation
 import Kingfisher
 import iCarousel
-//import BRYXBanner
+import BRYXBanner
 import RealmSwift
 
 class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopoverPresentationControllerDelegate, iCarouselDataSource,iCarouselDelegate {
@@ -42,8 +42,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         }
     }
     
-    
-
     
 
     var timer:NSTimer?
@@ -81,9 +79,20 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 songData.createdTime = dateFormatter.stringFromDate(createdTime)
                 
                 let realm = Realm()
-                realm.write({ () -> Void in
-                    realm.add(songData)
-                })
+                var songRealm = realm.objects(SongData)
+                if let songUrl = Realm(path: Realm.defaultPath).objects(SongData).valueForKey("url")! as? [String]{
+                    if contains(songUrl, self.songs[self.lastIndex].url){
+                        let banner = Banner(title: "You have already collected!", subtitle: nil, image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 2.0)
+                    }else{
+                        realm.write({ () -> Void in
+                            realm.add(songData)
+                        })
+                    }
+                }
+                
+                
         }
     }
     
@@ -95,7 +104,9 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "MediaStatusChange:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+        
         cdImage.addGestureRecognizer(tap)
         eHttp.delegate = self
         iv.addGestureRecognizer(tap!)
@@ -103,17 +114,37 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         
         cdImage.image = UIImage(named: "music")
         
-//        songTableView.estimatedRowHeight = 60
-//        songTableView.rowHeight = UITableViewAutomaticDimension
         carsousel.type = iCarouselType.CoverFlow
 //        let size = carsousel.bounds
 //        let image = UIImageView(frame: size)
 //        image.image = UIImage(named: "background")
 //        carsousel.addSubview(image)
         
-    
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "loadMain", userInfo: nil, repeats: false)
         
+        
+    }
+    
+    func MediaStatusChange(notification:NSNotification){
+        let info = notification.userInfo!
+        if let stopInfo = info[MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] as? NSNumber{
+            switch stopInfo{
+            case MPMovieFinishReason.PlaybackEnded.rawValue:
+                if lastIndex < songs.count{
+                    let firDict = self.tableData[lastIndex + 1] as! NSDictionary
+                    let audioUrl = firDict["url"] as! String
+                    let image = firDict["picture"] as! String
+                    self.iv.kf_setImageWithURL(NSURL(string: image)!)
+                    self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
+                    onSetAudio(audioUrl)
+                    self.carsousel.scrollToItemAtIndex(lastIndex + 1 , animated: true)
+                    lastIndex += 1
+                }
+            default:
+                break
+            }
+        }
         
     }
 
@@ -186,16 +217,17 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             let firDict = self.tableData[0] as! NSDictionary
             let audioUrl = firDict["url"] as! String
             let image = firDict["picture"] as! String
-            Alamofire.request(.GET, image).response() {
-                (_, _, data, _) in
-                let image = UIImage(data: data! as NSData)
-                self.iv.image = image
-                self.cdImage.image = image
-                self.cdImage.onRotacion()
-            }
-            
+//            Alamofire.request(.GET, image).response() {
+//                (_, _, data, _) in
+//                let image = UIImage(data: data! as NSData)
+//                self.iv.image = image
+//                self.cdImage.image = image
+//            }
+            self.iv.kf_setImageWithURL(NSURL(string: image)!)
+            self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
             onSetAudio(audioUrl)
             
+            self.carsousel.scrollToItemAtIndex(0, animated: true)
         }else if let channel = result["channels"] as? NSArray{
             self.channelData = channel
         }
@@ -204,12 +236,14 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     
     func onSetAudio(url:String){
+        self.cdImage.onRotacion()
         timer?.invalidate()
         playtime.text = "0:00"
         self.audioPlay.stop()
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
+        
         
     }
     
@@ -334,7 +368,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 //            label.font = label.font.fontWithSize(18)
             label.font = UIFont.boldSystemFontOfSize(15)
             
-            label.textColor = UIColor.blueColor()
+            label.textColor = UIColor(red: 50/255, green: 100/255, blue: 180/255, alpha: 0.9)
             
             label.tag = 1
             
@@ -365,15 +399,15 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             let audioUrl = rowData["url"] as! String
             onSetAudio(audioUrl)
             
-            Alamofire.request(.GET, rowData["picture"] as! String).response() {
-                (_, _, data, _) in
-                self.iv.image = UIImage(data: data! as NSData)
-                self.cdImage.image = UIImage(data: data! as NSData)
-                
-            }
+//            Alamofire.request(.GET, rowData["picture"] as! String).response() {
+//                (_, _, data, _) in
+//                self.iv.image = UIImage(data: data! as NSData)
+//                self.cdImage.image = UIImage(data: data! as NSData)
+//            }
             self.iv.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
+            self.cdImage.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
             
-            self.cdImage.onRotacion()
+            self.likeButton.imageView?.image = UIImage(named: "Like")
             lastIndex = index
         }else{
             switch audioPlay.playbackState{

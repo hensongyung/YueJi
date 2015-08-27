@@ -18,7 +18,9 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     
     var songUrls:[String] = []
     
-
+    var isSelected = [Bool]()
+    
+    var lastSelectIndex:Int?
 
     @IBOutlet weak var table: UITableView!
     
@@ -39,7 +41,6 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.sizeToFit()
@@ -62,8 +63,9 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         self.songUrls = []
         let feedParser = SongParser()
         feedParser.parseFeed("http://box.zhangmen.baidu.com/x?op=12&count=1&title=\(songName)$$", completionHandler: { (songItems: [(encode: String, decode: String, lrcid: String)]) -> Void in
-        
+        self.isSelected = [Bool](count: songItems.count, repeatedValue: true)
         self.songItems = songItems
+        
 //        println(songItems)
         for song in songItems {
             if let nameMatch = song.encode.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch){
@@ -74,8 +76,10 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
             
         }
         
+        self.isSelected = [Bool](count: self.songItems.count, repeatedValue: true)
+            
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.table.reloadData()
+            self.table.reloadData()
                 })
         })
     }
@@ -94,10 +98,11 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! searchTableViewCell
         if songItems.count > indexPath.row {
 //            cell.textLabel?.text = songItems[indexPath.row].lrcid
             cell.textLabel?.text =  "\(indexPath.row + 1)" + searchKeyStr
+            cell.addButton.hidden = self.isSelected[indexPath.row]
             return cell
         }
         
@@ -108,10 +113,16 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if songUrls.count > indexPath.row{
            onSetAudio(songUrls[indexPath.row])
-            if let cell =  table.cellForRowAtIndexPath(indexPath) as? searchTableViewCell{
-                cell.addButton.hidden = false
-            }
+//            if let cell =  table.cellForRowAtIndexPath(indexPath) as? searchTableViewCell{
+//                cell.addButton.hidden = false
+//            }
+            self.isSelected[indexPath.row] = false
+
+            table.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.lastSelectIndex = indexPath.row
+            
         }
+        
         
     }
     
@@ -147,7 +158,8 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
             if indentifier == "detailSegue" {
                 if let destinationViewController = segue.destinationViewController as? searchDetailViewController{
                     destinationViewController.songData.title = searchKeyStr
-                    destinationViewController.songData.url = songUrls[table.indexPathForSelectedRow()!.row]
+//                    destinationViewController.songData.url = songUrls[table.indexPathForSelectedRow()!.row]
+                    destinationViewController.songData.url = songUrls[self.lastSelectIndex!]
                     
                 }
             }

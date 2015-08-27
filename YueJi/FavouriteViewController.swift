@@ -15,6 +15,9 @@ import MediaPlayer
 
 class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate,UITableViewDataSource,UITableViewDelegate {
     
+    
+
+    
     var audioPlay = MPMoviePlayerController()
     
 //    let cache = KingfisherManager.sharedManager.cache
@@ -85,19 +88,19 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("FavouriteCell") as! FavouriteTableViewCell
         
-        let inverse = self.song.count - 1 - indexPath.row
-        if inverse  >= 0 {
-            cell.titleLabel.text = song.valueForKey("title")![inverse] as? String
-            cell.artistLabel.text = song.valueForKey("artist")![inverse] as? String
-            cell.discriptionLabel.text = song.valueForKey("detailFeeling")![inverse] as? String
+        let reverseIndex = self.song.count - 1 - indexPath.row
+        if reverseIndex  >= 0 {
+            cell.titleLabel.text = song.valueForKey("title")![reverseIndex] as? String
+            cell.artistLabel.text = song.valueForKey("artist")![reverseIndex] as? String
+            cell.discriptionLabel.text = song.valueForKey("detailFeeling")![reverseIndex] as? String
             
-            if let pictureUrl = song.valueForKey("picture")![inverse] as? String{
+            if let pictureUrl = song.valueForKey("picture")![reverseIndex] as? String{
                 cell.musicImage.kf_setImageWithURL(NSURL(string: pictureUrl)!)
                 if cell.musicImage.image == nil {
-                    cell.musicImage.image = UIImage(data: song.valueForKey("localPicture")![inverse] as! NSData )
+                    cell.musicImage.image = UIImage(data: song.valueForKey("localPicture")![reverseIndex] as! NSData )
                 }
             }
-            cell.createTimeLabel.text = song.valueForKey("createdTime")![inverse] as? String
+            cell.createTimeLabel.text = song.valueForKey("createdTime")![reverseIndex] as? String
             return cell
         }else{
             return cell
@@ -115,9 +118,9 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Delete") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            let deleteMenu = UIAlertController(title: "hello", message: "Are you sure to delete?", preferredStyle: UIAlertControllerStyle.Alert)
+            let deleteMenu = UIAlertController(title: "Are you sure to delete?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
             let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.Cancel, handler: nil)
-            let deleteAction = UIAlertAction(title: "sure", style: UIAlertActionStyle.Default, handler: { (action:UIAlertAction!) -> Void in
+            let deleteAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction!) -> Void in
                 
                 let realm = Realm()
                 realm.write({ () -> Void in
@@ -125,6 +128,12 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
                 })
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "waitForReloadData", userInfo: nil, repeats: false)
+                
+                if (self.song.count - 1 - indexPath.row) == 0{
+                    tableView.reloadEmptyDataSet()
+                }
+                
             })
             deleteMenu.addAction(deleteAction)
             deleteMenu.addAction(cancleAction)
@@ -136,7 +145,15 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        onSetAudio((song.valueForKey("url")![indexPath.row] as? String)!)
+        
+        
+        
+        let reverseIndex = self.song.count - 1 - indexPath.row
+        if reverseIndex >= 0 {
+            onSetAudio((song.valueForKey("url")![reverseIndex] as? String)!)
+        }
+        
+        
     }
     
 
@@ -144,6 +161,10 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     func onSetAudio(url:String){
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
+    }
+    
+    func waitForReloadData(){
+        tableView.reloadData()
     }
 
 

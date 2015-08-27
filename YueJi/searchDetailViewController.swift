@@ -13,6 +13,8 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
     
     var songData = SongData()
     
+    
+    
     let placeHolder = "Enter your feeling"
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -47,7 +49,9 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
                 imagePicker.sourceType = .Camera
                 self.presentViewController(imagePicker, animated: true, completion: nil)
             }else{
-                println("can't use camera")
+                let banner = Banner(title: "No camera available", subtitle: "Please try again.", image: UIImage(named: "Multiply"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:0.700))
+                banner.dismissesOnTap = true
+                banner.show(duration: 2.0)
             }
         })
         
@@ -73,7 +77,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
             realm.add(self.songData)
             
             self.dismissViewControllerAnimated(true, completion: {
-                let banner = Banner(title: "Success!", subtitle: "You can go to the Favourite Tab.", image: UIImage(named: "music"), backgroundColor: UIColor(red:48.00/255.0, green:174.0/255.0, blue:51.5/255.0, alpha:0.700))
+                let banner = Banner(title: "Success!", subtitle: "You can go to the Favourite Tab.", image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
                 banner.dismissesOnTap = true
                 banner.show(duration: 2.0)
             })
@@ -100,9 +104,10 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         detailTextField.textColor = UIColor.lightGrayColor()
     
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
-                
+        
+        
         
     }
     
@@ -123,17 +128,25 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         let info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         UIView.animateWithDuration(0.1, animations: { () -> Void in
+//            self.view.frame.origin.y += keyboardFrame.size.height
+            println("hide"+"\(keyboardFrame.size.height)" )
             self.view.frame.origin.y += keyboardFrame.size.height
         })
+        didKeyboardShow = false
     }
     
+    var didKeyboardShow = false
     func keyboardWillShow(notification:NSNotification){
-
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.view.frame.origin.y -= keyboardFrame.size.height
-        })
+        if !didKeyboardShow{
+            let info = notification.userInfo!
+            let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.view.frame.origin.y -= keyboardFrame.size.height
+                println("show"+"\(keyboardFrame.size.height)" )
+            })
+            didKeyboardShow = true
+        }
+        
         
         
     }
