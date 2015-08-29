@@ -35,7 +35,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     }
     
     
-    var searchKeyStr = "一生中最爱"
+    var searchKeyStr = "Payphone"
     
     
     override func viewDidLoad() {
@@ -56,6 +56,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         
         table.tableFooterView = UIView.new()
         
+        
     }
     
     
@@ -75,7 +76,6 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
             }
             
         }
-        
         self.isSelected = [Bool](count: self.songItems.count, repeatedValue: true)
             
         dispatch_async(dispatch_get_main_queue(), { () -> Void in

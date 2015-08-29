@@ -466,7 +466,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMw-rh-abp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186" y="-658"/>
+            <point key="canvasLocation" x="158" y="-768"/>
         </scene>
         <!--Channel Collection View Controller-->
         <scene sceneID="yaV-L6-u00">
@@ -778,7 +778,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2134" y="-1595"/>
+            <point key="canvasLocation" x="2086" y="-1535"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="80B-so-bnu">
@@ -786,7 +786,7 @@
                 <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="AfW-U4-MVB" customClass="PageViewController" customModule="YueJi" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGC-A1-vaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="-1554"/>
+            <point key="canvasLocation" x="65" y="-1524"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KE6-IM-hbw">

@@ -41,13 +41,13 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
             
         case 1:
             if let page1Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent1ViewController") as? PageContent1ViewController{
-                
+//                index--
                 return page1Content
             }
             
         case 2:
             if let page2Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent2ViewController") as? PageContent2ViewController {
-                
+//                index--
                 return page2Content
                 
             }
@@ -84,6 +84,7 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
             
         case 2:
             if let page2Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent2ViewController") as? PageContent2ViewController {
+                index++
                 return page2Content
             }
             

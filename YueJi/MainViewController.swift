@@ -8,7 +8,6 @@
 
 import UIKit
 import MediaPlayer
-//import QuartzCore
 import Alamofire
 //import AVFoundation
 import Kingfisher
@@ -20,7 +19,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     let cache = KingfisherManager.sharedManager.cache
     
-    
+    var isLike = [Bool]()
     var songs:[Song] = []
     
     var eHttp = HttpController()
@@ -28,6 +27,10 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
     
+    var timer:NSTimer?
+    var tableData  = NSArray()
+    var channelData = NSArray()
+    var audioPlay = MPMoviePlayerController()
     
     
     @IBOutlet var tap: UITapGestureRecognizer! = nil
@@ -42,12 +45,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         }
     }
     
-    
-
-    var timer:NSTimer?
-    var tableData  = NSArray()
-    var channelData = NSArray()
-    var audioPlay = MPMoviePlayerController()
     
     @IBOutlet weak var iv: UIImageView!
     
@@ -91,7 +88,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                         })
                     }
                 }
-                
+                self.isLike[self.lastIndex] = true
                 
         }
     }
@@ -104,8 +101,8 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "MediaStatusChange:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "MediaStatusChange:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+
         
         cdImage.addGestureRecognizer(tap)
         eHttp.delegate = self
@@ -126,28 +123,34 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         
     }
     
+    /*
     func MediaStatusChange(notification:NSNotification){
         let info = notification.userInfo!
-        if let stopInfo = info[MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] as? NSNumber{
-            switch stopInfo{
-            case MPMovieFinishReason.PlaybackEnded.rawValue:
-                if lastIndex < songs.count{
-                    let firDict = self.tableData[lastIndex + 1] as! NSDictionary
-                    let audioUrl = firDict["url"] as! String
-                    let image = firDict["picture"] as! String
-                    self.iv.kf_setImageWithURL(NSURL(string: image)!)
-                    self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
-                    onSetAudio(audioUrl)
-                    self.carsousel.scrollToItemAtIndex(lastIndex + 1 , animated: true)
-                    lastIndex += 1
-                }
-            default:
-                break
-            }
+        println(info)
+        if let stopInfo = info[MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] as? NSNumber {
+//            switch stopInfo{
+//            case MPMovieFinishReason.PlaybackEnded.rawValue:
+//                if lastIndex < songs.count{
+//                    let firDict = self.tableData[lastIndex + 1] as! NSDictionary
+//                    let audioUrl = firDict["url"] as! String
+//                    let image = firDict["picture"] as! String
+//                    self.iv.kf_setImageWithURL(NSURL(string: image)!)
+//                    self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
+//                    onSetAudio(audioUrl)
+////                    self.carsousel.scrollToItemAtIndex(lastIndex + 1 , animated: true)
+////                    lastIndex += 1
+////                    println(MPMovieFinishReason.PlaybackEnded.rawValue)
+////                    println(self.audioPlay.playbackState.rawValue)
+//                }
+//            default:
+//                break
+//            }
+            
         }
         
     }
-
+    */
+    
     func loadMain(){
         let defaults = NSUserDefaults.standardUserDefaults()
         blurEffectView.frame = iv.bounds
@@ -226,7 +229,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             self.iv.kf_setImageWithURL(NSURL(string: image)!)
             self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
             onSetAudio(audioUrl)
-            
+            self.isLike = [Bool](count: songs.count, repeatedValue: false)
             self.carsousel.scrollToItemAtIndex(0, animated: true)
         }else if let channel = result["channels"] as? NSArray{
             self.channelData = channel
@@ -248,6 +251,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     }
     
     func onUpdate(){
+        
         let c = audioPlay.currentPlaybackTime
         if c > 0 {
             let t = audioPlay.duration
@@ -406,8 +410,11 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 //            }
             self.iv.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
             self.cdImage.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
-            
-            self.likeButton.imageView?.image = UIImage(named: "Like")
+            if self.isLike[index]{
+                self.likeButton.imageView?.image = UIImage(named: "Liked")
+            }else{
+                self.likeButton.imageView?.image = UIImage(named: "Like")
+            }
             lastIndex = index
         }else{
             switch audioPlay.playbackState{
