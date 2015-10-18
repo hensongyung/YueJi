@@ -56,7 +56,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     @IBOutlet weak var likeButton: UIButton!
     @IBAction func like(sender: UIButton) {
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: nil, animations: {
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [], animations: {
                 self.likeButton.transform = CGAffineTransformMakeScale(1.5, 1.5)
             }) { (Bool) -> Void in
             self.likeButton.imageView?.image = UIImage(named: "Liked")
@@ -78,7 +78,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 let realm = Realm()
                 var songRealm = realm.objects(SongData)
                 if let songUrl = Realm(path: Realm.defaultPath).objects(SongData).valueForKey("url")! as? [String]{
-                    if contains(songUrl, self.songs[self.lastIndex].url){
+                    if songUrl.contains(self.songs[self.lastIndex].url){
                         let banner = Banner(title: "You have already collected!", subtitle: nil, image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
                         banner.dismissesOnTap = true
                         banner.show(duration: 2.0)
@@ -179,7 +179,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     
     func loadData(){
-        
         // Do any additional setup after loading the view, typically from a nib.
         eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
         eHttp.onSearch("http://douban.fm/j/mine/playlist?channel=0")
@@ -226,6 +225,8 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 //                self.iv.image = image
 //                self.cdImage.image = image
 //            }
+            
+
             self.iv.kf_setImageWithURL(NSURL(string: image)!)
             self.cdImage.kf_setImageWithURL(NSURL(string: image)!)
             onSetAudio(audioUrl)
@@ -245,6 +246,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         self.audioPlay.stop()
         self.audioPlay.contentURL = NSURL(string: url)
         self.audioPlay.play()
+
         timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "onUpdate", userInfo: nil, repeats: true)
         
         
@@ -313,7 +315,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
     {
-        
         return songs.count
     }
     
@@ -326,7 +327,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     var imageView: UIImageView!
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView!
     {
-        
         var song = songs[index]
         var label: UILabel! = nil
         var newView = view
@@ -342,8 +342,12 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
             
             imageView.image = UIImage(named: "music")
 //            imageView.hnk_setImageFromURL(NSURL(string: song.picture)!)
+            
             imageView.kf_setImageWithURL(NSURL(string: song.picture)!)
+            
+            
             //            imageView.layer.cornerRadius = carouselSize
+            
             
             imageView.layer.masksToBounds = true
             
@@ -391,6 +395,7 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         //you'll get weird issues with carousel item content appearing
         //in the wrong place in the carousel
         //        label.text = "\(items[index])"
+        
         label.text = song.title
         
         return newView
@@ -408,8 +413,11 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
 //                self.iv.image = UIImage(data: data! as NSData)
 //                self.cdImage.image = UIImage(data: data! as NSData)
 //            }
+            
+            
             self.iv.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
             self.cdImage.kf_setImageWithURL(NSURL(string: rowData["picture"] as! String)!)
+            
             if self.isLike[index]{
                 self.likeButton.imageView?.image = UIImage(named: "Liked")
             }else{

@@ -9,7 +9,7 @@
 import UIKit
 
 class EkoImage: UIImageView {
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 //        self.frame.size.width = UIScreen.mainScreen().bounds.height
 //        self.frame.size.height = UIScreen.mainScreen().bounds.width
@@ -21,15 +21,13 @@ class EkoImage: UIImageView {
         self.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6).CGColor
         self.alpha = 0.9
         
-        
-        
     }
     
     
     
     
     func onRotacion(){
-        var animation  = CABasicAnimation(keyPath: "transform.rotation")
+        let animation  = CABasicAnimation(keyPath: "transform.rotation")
         
         animation.fromValue = 0
         animation.toValue = M_PI * 2
@@ -38,6 +36,7 @@ class EkoImage: UIImageView {
         self.layer.addAnimation(animation, forKey: "onRotation")
         
     }
+    
     
     func pauseLayer(){
         let pausedTime  =  layer.convertTime(CACurrentMediaTime(), fromLayer: nil)

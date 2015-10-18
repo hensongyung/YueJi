@@ -26,7 +26,7 @@ class PageContent2ViewController: UIViewController {
     @IBOutlet weak var armImage: UIImageView!
     
     @IBAction func play(sender: UITapGestureRecognizer) {
-        var rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         
         rotationAnimation.toValue  = M_2_PI
         rotationAnimation.duration = 0.2
@@ -43,7 +43,7 @@ class PageContent2ViewController: UIViewController {
             }) { (done:Bool) -> Void in
             self.cdImage.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
         }
-        UIView.animateWithDuration(0.7, delay: 3, options: nil, animations: { () -> Void in
+        UIView.animateWithDuration(0.7, delay: 3, options: [], animations: { () -> Void in
             self.view.transform = CGAffineTransformMakeScale(3, 3)
             self.view.alpha = 0
             

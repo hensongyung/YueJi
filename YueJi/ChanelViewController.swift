@@ -45,7 +45,7 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("channel", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("channel", forIndexPath: indexPath) 
         let rowData = channelData[indexPath.row] as! NSDictionary
 //        let rowDataq = channelData[indexPath.row] as! [AnyObject]
         
@@ -55,7 +55,7 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var rowData = channelData[indexPath.row] as! NSDictionary
+        let rowData = channelData[indexPath.row] as! NSDictionary
         let channelId: AnyObject! = rowData["channel_id"] as AnyObject!
         let channel = "channel=\(channelId)"
         delegate?.onChangeChannel(channel)
@@ -71,7 +71,7 @@ class ChanelViewController: UIViewController,UITableViewDataSource,UITableViewDe
 //            cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
 //        })
         
-        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.6,initialSpringVelocity:0.5,options: nil, animations: {
+        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.6,initialSpringVelocity:0.5,options: [], animations: {
             //把窗口变成原来的大小
             cell.layer.transform = CATransform3DMakeScale(1, 1, 1)},
             completion: nil)

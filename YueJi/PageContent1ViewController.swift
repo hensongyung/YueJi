@@ -32,15 +32,15 @@ class PageContent1ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(1, delay: 0, options: nil, animations: {
+        UIView.animateWithDuration(1, delay: 0, options: [], animations: {
             self.textImage.alpha = 1
         }, completion: nil)
         
-        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 0.6,initialSpringVelocity:0.5,options: nil, animations: {
+        UIView.animateWithDuration(1, delay: 1, usingSpringWithDamping: 0.6,initialSpringVelocity:0.5,options: [], animations: {
             self.headImage.alpha = 1
             self.headImage.transform = CGAffineTransformMakeScale(1.0, 1.0)
             }, completion: nil)
-        UIView.animateWithDuration(1, delay: 2,usingSpringWithDamping: 0.6,initialSpringVelocity:0.5, options: nil, animations: {
+        UIView.animateWithDuration(1, delay: 2,usingSpringWithDamping: 0.6,initialSpringVelocity:0.5, options: [], animations: {
             self.earphoneImage.transform = CGAffineTransformMakeScale(1.0, 1.0)
             self.earphoneImage.alpha = 1
             }, completion: nil)

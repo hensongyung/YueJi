@@ -9,7 +9,7 @@
 import UIKit
 
 class MainBackgroundImage: UIImageView {
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let blurEffectView =  UIVisualEffectView(effect: blurEffect)

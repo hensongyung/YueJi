@@ -116,11 +116,11 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
 //        }
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Delete") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Delete") { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
             let deleteMenu = UIAlertController(title: "Are you sure to delete?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
             let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.Cancel, handler: nil)
-            let deleteAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction!) -> Void in
+            let deleteAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction) -> Void in
                 
                 let realm = Realm()
                 realm.write({ () -> Void in

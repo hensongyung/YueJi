@@ -42,7 +42,7 @@ class SongParser: NSObject, NSXMLParserDelegate{
         let task = urlSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if error != nil {
-                println(error.localizedDescription)
+                print(error.localizedDescription)
             }
             
             // Parse XML data
@@ -64,7 +64,7 @@ class SongParser: NSObject, NSXMLParserDelegate{
         self.parserCompletionHandler?(songItems)
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         currentElement = elementName
         
@@ -78,7 +78,7 @@ class SongParser: NSObject, NSXMLParserDelegate{
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         if elementName == "url" {
-            var songItem = (encode: currentEncode, decode: currentDecode, lrcid: currentLrcid)
+            let songItem = (encode: currentEncode, decode: currentDecode, lrcid: currentLrcid)
             songItems += [songItem]
         }
     }
@@ -95,7 +95,7 @@ class SongParser: NSObject, NSXMLParserDelegate{
     }
     
     func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        println(parseError.localizedDescription)
+        print(parseError.localizedDescription)
     }
     
     

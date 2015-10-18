@@ -26,9 +26,10 @@ class Song {
         
         if (length > 0){
             let ss = length % 60
-            var s = ss<10 ?"0"+"\(ss)":"\(ss)"
+            let s = ss<10 ?"0"+"\(ss)":"\(ss)"
         let min = length / 60
             self.length = "\(min):\(s)"
         }
     }
 }
+

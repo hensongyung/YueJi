@@ -71,7 +71,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         for song in songItems {
             if let nameMatch = song.encode.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch){
             let encodeurl = song.encode.substringToIndex(nameMatch.startIndex)
-            var url = encodeurl + "/" + song.decode
+            let url = encodeurl + "/" + song.decode
             self.songUrls  += [url]
             }
             
@@ -94,7 +94,6 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
         return songItems.count
     }
     
-
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         

@@ -33,7 +33,9 @@
 		01F5645A1B86FB4000BA154C /* searchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F564591B86FB4000BA154C /* searchDetailViewController.swift */; };
 		01F71CBA1B84552200F4ACBE /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */; };
 		01FD96451B82C4B1000BD742 /* SongData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD96441B82C4B1000BD742 /* SongData.swift */; };
-		2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; };
+		2AF766C9B7BC256B1B516F59 /* Pods_YueJiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC4C77836BFA30A2CDD823D /* Pods_YueJiTests.framework */; };
+		ADF1D30D2C3989C57392F889 /* Pods_YueJi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8E62C5C7894F1B78C6D27C /* Pods_YueJi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +80,14 @@
 		01F564591B86FB4000BA154C /* searchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchDetailViewController.swift; sourceTree = "<group>"; };
 		01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		01FD96441B82C4B1000BD742 /* SongData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongData.swift; sourceTree = "<group>"; };
+		0BAD177E5B7492B1083149A2 /* Pods-YueJiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YueJiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YueJiTests/Pods-YueJiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F6C9C60303A66729F043EC8 /* Pods-YueJiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YueJiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YueJiTests/Pods-YueJiTests.release.xcconfig"; sourceTree = "<group>"; };
 		43A44D0C5D0DA47AB5A1686C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8461B78FBA853C35C2A23D5E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD8E62C5C7894F1B78C6D27C /* Pods_YueJi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YueJi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC05489FF50207FB9CF59A3F /* Pods-YueJi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YueJi.release.xcconfig"; path = "Pods/Target Support Files/Pods-YueJi/Pods-YueJi.release.xcconfig"; sourceTree = "<group>"; };
+		ECC4C77836BFA30A2CDD823D /* Pods_YueJiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YueJiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD106DE5A967877DA337FACF /* Pods-YueJi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YueJi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YueJi/Pods-YueJi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */,
+				ADF1D30D2C3989C57392F889 /* Pods_YueJi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AF766C9B7BC256B1B516F59 /* Pods_YueJiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +250,10 @@
 			children = (
 				0189154403A886477197DC0D /* Pods.debug.xcconfig */,
 				43A44D0C5D0DA47AB5A1686C /* Pods.release.xcconfig */,
+				0BAD177E5B7492B1083149A2 /* Pods-YueJiTests.debug.xcconfig */,
+				2F6C9C60303A66729F043EC8 /* Pods-YueJiTests.release.xcconfig */,
+				FD106DE5A967877DA337FACF /* Pods-YueJi.debug.xcconfig */,
+				DC05489FF50207FB9CF59A3F /* Pods-YueJi.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -248,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				8461B78FBA853C35C2A23D5E /* Pods.framework */,
+				BD8E62C5C7894F1B78C6D27C /* Pods_YueJi.framework */,
+				ECC4C77836BFA30A2CDD823D /* Pods_YueJiTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,9 +295,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 019782C21B326BF900168223 /* Build configuration list for PBXNativeTarget "YueJiTests" */;
 			buildPhases = (
+				F73C7E162FD21398E407B862 /* Check Pods Manifest.lock */,
 				019782B11B326BF900168223 /* Sources */,
 				019782B21B326BF900168223 /* Frameworks */,
 				019782B31B326BF900168223 /* Resources */,
+				12D5A47A87C79771821038EC /* Embed Pods Frameworks */,
+				3D4903B2F4F64D619E0DD931 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,7 +318,9 @@
 		019782981B326BF900168223 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "翁嘉升";
 				TargetAttributes = {
 					0197829F1B326BF900168223 = {
@@ -352,6 +373,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12D5A47A87C79771821038EC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YueJiTests/Pods-YueJiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D4903B2F4F64D619E0DD931 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YueJiTests/Pods-YueJiTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		72A6C649ED7D74BA9484E258 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,7 +430,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YueJi/Pods-YueJi-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E99D15A98C913F273F852111 /* Copy Pods Resources */ = {
@@ -394,7 +445,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YueJi/Pods-YueJi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F73C7E162FD21398E407B862 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -488,6 +554,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -506,6 +573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -543,6 +611,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -550,30 +619,36 @@
 		};
 		019782C01B326BF900168223 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0189154403A886477197DC0D /* Pods.debug.xcconfig */;
+			baseConfigurationReference = FD106DE5A967877DA337FACF /* Pods-YueJi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YueJi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hensonyung.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		019782C11B326BF900168223 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43A44D0C5D0DA47AB5A1686C /* Pods.release.xcconfig */;
+			baseConfigurationReference = DC05489FF50207FB9CF59A3F /* Pods-YueJi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = YueJi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hensonyung.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -592,6 +667,7 @@
 				);
 				INFOPLIST_FILE = YueJiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hensonyung.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YueJi.app/YueJi";
 			};
@@ -607,6 +683,7 @@
 				);
 				INFOPLIST_FILE = YueJiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hensonyung.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YueJi.app/YueJi";
 			};

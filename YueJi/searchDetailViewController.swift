@@ -28,7 +28,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
     @IBAction func takePicture(sender: UITapGestureRecognizer) {
         let optionMenu = UIAlertController(title: nil, message: "请选择照片", preferredStyle: .ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        let takeLibraryPhotoAction = UIAlertAction(title: "从相册中选择", style: .Default) { (action:UIAlertAction!) -> Void in
+        let takeLibraryPhotoAction = UIAlertAction(title: "从相册中选择", style: .Default) { (action:UIAlertAction) -> Void in
             //先检查是否可用
             if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary){
                 let imagePicker  = UIImagePickerController()
@@ -40,7 +40,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
             }
         }
         
-        let takeCameraAction = UIAlertAction(title: "拍照", style: .Default, handler: { (action:UIAlertAction!) -> Void in
+        let takeCameraAction = UIAlertAction(title: "拍照", style: .Default, handler: { (action:UIAlertAction) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.Camera){
                 let imagePicker = UIImagePickerController()
                 //immediately after declaring imagePicker
@@ -129,7 +129,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         UIView.animateWithDuration(0.1, animations: { () -> Void in
 //            self.view.frame.origin.y += keyboardFrame.size.height
-            println("hide"+"\(keyboardFrame.size.height)" )
+            print("hide"+"\(keyboardFrame.size.height)" )
             self.view.frame.origin.y += keyboardFrame.size.height
         })
         didKeyboardShow = false
@@ -142,7 +142,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
             let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                 self.view.frame.origin.y -= keyboardFrame.size.height
-                println("show"+"\(keyboardFrame.size.height)" )
+                print("show"+"\(keyboardFrame.size.height)" )
             })
             didKeyboardShow = true
         }
@@ -177,7 +177,7 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
     
     
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         takePictureImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         takePictureImage.contentMode = UIViewContentMode.ScaleAspectFill
         takePictureImage.clipsToBounds = true
