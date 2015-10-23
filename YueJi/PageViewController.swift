@@ -15,7 +15,12 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
         
         // Do any additional setup after loading the view.
         dataSource = self
-        if let startingViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
+//        if let startingViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
+//            setViewControllers([startingViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+//            index++
+//        }
+        
+        if let startingViewController = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController"){
             setViewControllers([startingViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
             index++
         }
@@ -35,7 +40,10 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
 //        return viewControllerAtIndex(index)
         switch index{
         case 0:
-            if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
+//            if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
+//                return page3Content
+//            }
+            if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController"){
                 return page3Content
             }
             
@@ -71,7 +79,7 @@ class PageViewController: UIPageViewController,UIPageViewControllerDataSource {
         
         switch index{
         case 0:
-            if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") as? UIViewController{
+            if let page3Content = storyboard?.instantiateViewControllerWithIdentifier("PageContent3ViewController") {
                 index++
                 return page3Content
             }

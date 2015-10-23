@@ -54,7 +54,7 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
 //        parserUrl(searchStr)
         parserUrl(searchKeyStr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
         
-        table.tableFooterView = UIView.new()
+        table.tableFooterView = UIView()
         
         
     }
@@ -144,8 +144,8 @@ class searchViewController: UIViewController,NSXMLParserDelegate,UITableViewData
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
-            searchKeyStr = searchBar.text
-            parserUrl(searchBar.text.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+            searchKeyStr = searchBar.text!
+            parserUrl(searchBar.text!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
     }
     
     @IBAction func close(segue:UIStoryboardSegue) {

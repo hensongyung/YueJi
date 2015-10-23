@@ -16,15 +16,21 @@ protocol HttpProtocol {
 class HttpController: NSObject {
     var delegate:HttpProtocol?
 
-    func onSearch(url:String) {
-        Alamofire.request(.GET, url).responseJSON() {
-            (_, _, data, _) in
-            if let datasource = data as? NSDictionary{
-                self.delegate?.didReceiving(datasource)
+//    func onSearch(url:String) {
+//        Alamofire.request(.GET, url).responseJSON() {
+//            (_, _, data, _) in
+//            if let datasource = data as? NSDictionary{
+//                self.delegate?.didReceiving(datasource)
+//            }
+//        }
+    
+        func onSearch(url:String) {
+            Alamofire.request(.GET, url).responseJSON() {
+                response in
+                if let datasource = response.result.value as? NSDictionary{
+                    self.delegate?.didReceiving(datasource)
+                }
             }
-        }
-      
-        
         
     }
     

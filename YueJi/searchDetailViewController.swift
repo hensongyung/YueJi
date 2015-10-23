@@ -69,20 +69,25 @@ class searchDetailViewController: UIViewController,UIImagePickerControllerDelega
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYYMMdd")
         
         
-        songData.localPicture = UIImagePNGRepresentation(takePictureImage.image)
+        songData.localPicture = UIImagePNGRepresentation(takePictureImage.image!)!
         songData.createdTime = dateFormatter.stringFromDate(createdTime)
         songData.detailFeeling = detailTextField.text
-        let realm = Realm()
-        realm.write { () -> Void in
-            realm.add(self.songData)
-            
-            self.dismissViewControllerAnimated(true, completion: {
-                let banner = Banner(title: "Success!", subtitle: "You can go to the Favourite Tab.", image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
-                banner.dismissesOnTap = true
-                banner.show(duration: 2.0)
-            })
+        do{
+            let realm = try Realm()
+            try realm.write { () -> Void in
+                realm.add(self.songData)
+                
+                self.dismissViewControllerAnimated(true, completion: {
+                    let banner = Banner(title: "Success!", subtitle: "You can go to the Favourite Tab.", image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 2.0)
+                })
+                
+            }
+        }catch{
             
         }
+        
         
     }
     

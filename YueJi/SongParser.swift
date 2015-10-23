@@ -42,11 +42,11 @@ class SongParser: NSObject, NSXMLParserDelegate{
         let task = urlSession.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if error != nil {
-                print(error.localizedDescription)
+                print(error!.localizedDescription)
             }
             
             // Parse XML data
-            self.parser = NSXMLParser(data: data)
+            self.parser = NSXMLParser(data: data!)
             self.parser.delegate = self
             self.parser.parse()
             

@@ -22,7 +22,8 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     
 //    let cache = KingfisherManager.sharedManager.cache
     
-    let song = Realm(path: Realm.defaultPath).objects(SongData)
+    
+    let song = try! Realm(path: Realm.defaultPath).objects(SongData)
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -35,8 +36,8 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
         self.tableView.emptyDataSetDelegate = self;
         
         // A little trick for removing the cell separators
-        self.tableView.tableFooterView = UIView.new()
-        
+//        self.tableView.tableFooterView = UIView.new()
+        self.tableView.tableFooterView = UIView()
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -90,17 +91,33 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
         
         let reverseIndex = self.song.count - 1 - indexPath.row
         if reverseIndex  >= 0 {
-            cell.titleLabel.text = song.valueForKey("title")![reverseIndex] as? String
-            cell.artistLabel.text = song.valueForKey("artist")![reverseIndex] as? String
-            cell.discriptionLabel.text = song.valueForKey("detailFeeling")![reverseIndex] as? String
+//            cell.titleLabel.text = song.valueForKey("title")![reverseIndex] as? String
+//            cell.titleLabel.text = (song.valueForKey("title") as! Array)[reverseIndex] as String
+//            cell.artistLabel.text = song.valueForKey("artist")![reverseIndex] as? String
+//            cell.discriptionLabel.text = song.valueForKey("detailFeeling")![reverseIndex] as? String
+//            
+//            if let pictureUrl = song.valueForKey("picture")![reverseIndex] as? String{
+//                cell.musicImage.kf_setImageWithURL(NSURL(string: pictureUrl)!)
+//                if cell.musicImage.image == nil {
+//                    cell.musicImage.image = UIImage(data: song.valueForKey("localPicture")![reverseIndex] as! NSData )
+//                }
+//            }
+//            cell.createTimeLabel.text = song.valueForKey("createdTime")![reverseIndex] as? String
             
-            if let pictureUrl = song.valueForKey("picture")![reverseIndex] as? String{
+            
+            
+            cell.titleLabel.text = (song.valueForKey("title") as! Array)[reverseIndex] as String
+            cell.artistLabel.text = (song.valueForKey("artist") as! Array)[reverseIndex] as String
+            cell.discriptionLabel.text = (song.valueForKey("detailFeeling") as! Array)[reverseIndex] as String
+            
+            if let pictureUrl = (song.valueForKey("picture") as! Array)[reverseIndex] as? String{
                 cell.musicImage.kf_setImageWithURL(NSURL(string: pictureUrl)!)
                 if cell.musicImage.image == nil {
-                    cell.musicImage.image = UIImage(data: song.valueForKey("localPicture")![reverseIndex] as! NSData )
+                    cell.musicImage.image = UIImage(data: (song.valueForKey("localPicture") as! Array)[reverseIndex] as NSData )
                 }
             }
-            cell.createTimeLabel.text = song.valueForKey("createdTime")![reverseIndex] as? String
+            cell.createTimeLabel.text = (song.valueForKey("createdTime")as! Array)[reverseIndex] as String
+            
             return cell
         }else{
             return cell
@@ -122,10 +139,16 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
             let cancleAction = UIAlertAction(title: "Cancle", style: UIAlertActionStyle.Cancel, handler: nil)
             let deleteAction = UIAlertAction(title: "Sure", style: UIAlertActionStyle.Destructive, handler: { (action:UIAlertAction) -> Void in
                 
-                let realm = Realm()
-                realm.write({ () -> Void in
-                    realm.delete(self.song[self.song.count - 1 - indexPath.row])
-                })
+                do{
+                    let realm = try Realm()
+                    try realm.write({ () -> Void in
+                        realm.delete(self.song[self.song.count - 1 - indexPath.row])
+                    })
+                }catch{
+                    
+                }
+                
+                
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 let timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "waitForReloadData", userInfo: nil, repeats: false)
@@ -150,7 +173,8 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
         
         let reverseIndex = self.song.count - 1 - indexPath.row
         if reverseIndex >= 0 {
-            onSetAudio((song.valueForKey("url")![reverseIndex] as? String)!)
+//            onSetAudio((song.valueForKey("url")![reverseIndex] as? String)!)
+            onSetAudio(song.valueForKey("url") as! String)
         }
         
         
@@ -166,6 +190,7 @@ class FavouriteViewController: UIViewController,DZNEmptyDataSetSource,DZNEmptyDa
     func waitForReloadData(){
         tableView.reloadData()
     }
-
+    
+    
 
 }

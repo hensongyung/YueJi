@@ -12,6 +12,7 @@
 		010DBE381B3BA9390017F47E /* PageContent2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010DBE351B3BA9390017F47E /* PageContent2ViewController.swift */; };
 		010DBE391B3BA9390017F47E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010DBE361B3BA9390017F47E /* PageViewController.swift */; };
 		0110D1AC1B610AD4000F67B3 /* EkoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110D1AB1B610AD4000F67B3 /* EkoImage.swift */; };
+		0175B00A1BD3EB77009C954E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; };
 		019782A61B326BF900168223 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A51B326BF900168223 /* AppDelegate.swift */; };
 		019782A81B326BF900168223 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019782A71B326BF900168223 /* searchViewController.swift */; };
 		019782AB1B326BF900168223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 019782A91B326BF900168223 /* Main.storyboard */; };
@@ -33,9 +34,8 @@
 		01F5645A1B86FB4000BA154C /* searchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F564591B86FB4000BA154C /* searchDetailViewController.swift */; };
 		01F71CBA1B84552200F4ACBE /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F71CB91B84552200F4ACBE /* FavouriteTableViewCell.swift */; };
 		01FD96451B82C4B1000BD742 /* SongData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FD96441B82C4B1000BD742 /* SongData.swift */; };
-		2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8461B78FBA853C35C2A23D5E /* Pods.framework */; };
 		2AF766C9B7BC256B1B516F59 /* Pods_YueJiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC4C77836BFA30A2CDD823D /* Pods_YueJiTests.framework */; };
-		ADF1D30D2C3989C57392F889 /* Pods_YueJi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8E62C5C7894F1B78C6D27C /* Pods_YueJi.framework */; };
+		98D471B91AFCDC2E8F48C64F /* Pods_YueJi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8E62C5C7894F1B78C6D27C /* Pods_YueJi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2845C3269A52A90B56E33780 /* Pods.framework in Frameworks */,
-				ADF1D30D2C3989C57392F889 /* Pods_YueJi.framework in Frameworks */,
+				0175B00A1BD3EB77009C954E /* Pods.framework in Frameworks */,
+				98D471B91AFCDC2E8F48C64F /* Pods_YueJi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +535,7 @@
 /* Begin XCBuildConfiguration section */
 		019782BD1B326BF900168223 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD106DE5A967877DA337FACF /* Pods-YueJi.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -581,6 +582,7 @@
 		};
 		019782BE1B326BF900168223 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC05489FF50207FB9CF59A3F /* Pods-YueJi.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -655,6 +657,7 @@
 		};
 		019782C31B326BF900168223 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BAD177E5B7492B1083149A2 /* Pods-YueJiTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -675,6 +678,7 @@
 		};
 		019782C41B326BF900168223 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F6C9C60303A66729F043EC8 /* Pods-YueJiTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

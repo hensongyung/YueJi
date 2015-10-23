@@ -75,18 +75,22 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
                 songData.artist = self.songs[self.self.lastIndex].artist
                 songData.createdTime = dateFormatter.stringFromDate(createdTime)
                 
-                let realm = Realm()
-                var songRealm = realm.objects(SongData)
-                if let songUrl = Realm(path: Realm.defaultPath).objects(SongData).valueForKey("url")! as? [String]{
+                do{
+                let realm = try Realm()
+                var songRealm = try realm.objects(SongData)
+                if let songUrl = try Realm(path: Realm.defaultPath).objects(SongData).valueForKey("url")! as? [String]{
                     if songUrl.contains(self.songs[self.lastIndex].url){
                         let banner = Banner(title: "You have already collected!", subtitle: nil, image: UIImage(named: "Checkmark"), backgroundColor: UIColor(red:50/255.0, green:100/255.0, blue:180/255.0, alpha:0.700))
                         banner.dismissesOnTap = true
                         banner.show(duration: 2.0)
                     }else{
-                        realm.write({ () -> Void in
+                        try realm.write({ () -> Void in
                             realm.add(songData)
                         })
                     }
+                }
+                }catch{
+                    
                 }
                 self.isLike[self.lastIndex] = true
                 
@@ -182,7 +186,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
         // Do any additional setup after loading the view, typically from a nib.
         eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
         eHttp.onSearch("http://douban.fm/j/mine/playlist?channel=0")
-        
     }
     
     
@@ -199,7 +202,6 @@ class MainViewController: UIViewController,HttpProtocol,ChannelProtocol,UIPopove
     func didReceiving(result: NSDictionary) {
         if let songsArray = result["song"] as? NSArray {
             self.tableData = songsArray
-            
             songs = []
             for songInfo in songsArray{
                 var song = Song(url: "", picture: "", title:"",artist: "", length: songInfo["length"] as! Int,  public_time: "1976")
